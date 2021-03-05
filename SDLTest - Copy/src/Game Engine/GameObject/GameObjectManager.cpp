@@ -5,11 +5,17 @@
 #include <iostream>
 
 void GameObjectManager::draw(){
-    for(auto& gameObj : gameObjects) gameObj->draw();
+    for (auto& gameObj : gameObjects) {
+        if(gameObj.get()->isActive())
+        gameObj->draw();
+    }
 }
 
 void GameObjectManager::update(float deltaTime){
-    for(auto& gameObj : gameObjects) gameObj->update(deltaTime);
+    for (auto& gameObj : gameObjects) {
+        if (gameObj.get()->isActive())
+        gameObj->update(deltaTime);
+    }
 }
 
 void GameObjectManager::addGameObject(GameObject* gameObj){
@@ -17,16 +23,12 @@ void GameObjectManager::addGameObject(GameObject* gameObj){
     gameObjects.emplace_back(std::move(uniquePtr));
 }
 
-void GameObjectManager::refresh(){
-
-}
-
 GameObject* GameObjectManager::cloneGameObject(GameObject* gameObj){
     return nullptr;
 }
 
 void GameObjectManager::eraseGameObject(GameObject* gameObj){
-
+    delete gameObj;
 }
 
 

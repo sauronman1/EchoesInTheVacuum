@@ -16,20 +16,25 @@ class GameObject {
         inline virtual ~GameObject(){}
 
         inline void draw(){
-            for(auto& component : components) component->draw();
-        }
+            if (active) {
+                for (auto& component : components) component->draw();
+            }
+            }
 
         inline void update(float deltaTime){
-            for(auto& component : components) component->update(deltaTime);
+            if (active) {
+                for (auto& component : components) component->update(deltaTime);
+            }
         }
 
-        inline bool iSActive() const {
+        inline bool isActive() const {
             return active;
         }
 
-        inline void destroy(){
-            active = false;
+        void SetEnabled(bool status){
+            active = status;
         }
+
 
         template<typename T>
         inline bool hasComponent() const {

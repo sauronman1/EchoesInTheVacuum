@@ -38,7 +38,7 @@ void MainScene::init(GameObjectManager* manager)
 	manager->addGameObject(musicButtonObj);
 	manager->addGameObject(logoObj);
 	manager->addGameObject(playLabelObj);
-	
+
 	//sceneClean();
 	//SceneManager::get().goToNextScene(1);
 

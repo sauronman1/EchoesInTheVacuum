@@ -12,7 +12,6 @@ class GameObjectManager {
 
         void draw();
         void update(float deltaTime);
-        void refresh();
         void addGameObject(GameObject* player);
         void eraseGameObject(GameObject* player);
         GameObject* cloneGameObject(GameObject* player);

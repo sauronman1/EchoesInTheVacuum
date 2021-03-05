@@ -51,7 +51,6 @@ void Game::render(){
 }
 
 void Game::update(float deltaTime){
-    manager->refresh();
     manager->update(deltaTime);
     SceneManager::get().update(deltaTime);
     
