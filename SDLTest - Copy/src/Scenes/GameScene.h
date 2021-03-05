@@ -7,5 +7,8 @@ public:
 	void update(float deltaTime) override;
 	void sceneClean() override;
 private:
+	bool isClicked = false;
+	GameObject* playerObj;
+	float moveSpeed;
 };
 
