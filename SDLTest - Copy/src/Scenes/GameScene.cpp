@@ -31,7 +31,7 @@ void GameScene::sceneClean() {
 
 void GameScene::update(float deltaTime)
 {
-
+	//CommonFunctions::printConsoleMessage(CommonFunctions::numToString(deltaTime));
 	if (SDLEvent::get().getKeyValue(SDLK_a) == 1 && playerObj->getComponent<Transform>().position.x > 0) {
 		playerObj->getComponent<Transform>().translate(Vector2<float>(-moveSpeed, 0));
 	}
