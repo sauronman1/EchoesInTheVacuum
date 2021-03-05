@@ -61,6 +61,12 @@
     <Filter Include="Header Files\Scenes">
       <UniqueIdentifier>{4ca90b87-9c65-439a-97bc-72c77a75160f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Game Engine\Essentials\SoundManager">
+      <UniqueIdentifier>{2a595b59-46d2-4d09-ae05-2656bd5dd065}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game Engine\Essentials\SoundManager">
+      <UniqueIdentifier>{96bb683e-c271-47e0-aeab-b63686eabe00}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game Engine\Essentials\TextureManager.cpp">
@@ -92,6 +98,12 @@
     </ClCompile>
     <ClCompile Include="src\Game Engine\SDL Events\SDLEvent.cpp">
       <Filter>Source Files\Game Engine\SDL Events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game Engine\Essentials\Parser.cpp">
+      <Filter>Source Files\Game Engine\Essentials</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game Engine\Essentials\SoundManager\SoundManager.cpp">
+      <Filter>Source Files\Game Engine\Essentials\SoundManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +166,12 @@
     </ClInclude>
     <ClInclude Include="src\Game Engine\GameObject\Components\Projectile.h">
       <Filter>Header Files\Game Engine\GameObject\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game Engine\Essentials\SoundManager\SoundManager.h">
+      <Filter>Header Files\Game Engine\Essentials\SoundManager</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game Engine\Essentials\Parser.h">
+      <Filter>Header Files\Game Engine\Essentials</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

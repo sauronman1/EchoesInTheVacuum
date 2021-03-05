@@ -21,7 +21,9 @@
   <ItemGroup>
     <ClCompile Include="src\Game Engine\Essentials\Collision\Collision2D.cpp" />
     <ClCompile Include="src\Game Engine\Essentials\CommonFunctions.cpp" />
+    <ClCompile Include="src\Game Engine\Essentials\Parser.cpp" />
     <ClCompile Include="src\Game Engine\Essentials\SceneManagement\SceneManager.cpp" />
+    <ClCompile Include="src\Game Engine\Essentials\SoundManager\SoundManager.cpp" />
     <ClCompile Include="src\Game Engine\Essentials\TextureManager.cpp" />
     <ClCompile Include="src\Game Engine\GameObject\GameObjectManager.cpp" />
     <ClCompile Include="src\Game Engine\SDL Events\SDLEvent.cpp" />
@@ -33,8 +35,10 @@
   <ItemGroup>
     <ClInclude Include="src\Game Engine\Essentials\Collision\Collision2D.h" />
     <ClInclude Include="src\Game Engine\Essentials\CommonFunctions.h" />
+    <ClInclude Include="src\Game Engine\Essentials\Parser.h" />
     <ClInclude Include="src\Game Engine\Essentials\SceneManagement\Scene.h" />
     <ClInclude Include="src\Game Engine\Essentials\SceneManagement\SceneManager.h" />
+    <ClInclude Include="src\Game Engine\Essentials\SoundManager\SoundManager.h" />
     <ClInclude Include="src\Game Engine\Essentials\TextureManager.h" />
     <ClInclude Include="src\Game Engine\GameObject\Components\BoxCollider2D.h" />
     <ClInclude Include="src\Game Engine\GameObject\Components\Component.h" />
