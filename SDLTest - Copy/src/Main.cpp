@@ -24,7 +24,7 @@ int main(int argc, char** argv){
         if (frameDelay > frameTime) {
             SDL_Delay(frameDelay - frameTime);
         }
-
+         
     }
 
     sdlEvent.clean();
