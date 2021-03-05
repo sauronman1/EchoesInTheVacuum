@@ -14,16 +14,19 @@ void MainScene::init(GameObjectManager* manager)
 	musicButtonObj = new GameObject();
 	logoObj = new GameObject();
 	playLabelObj = new GameObject();
+	GameObject* lable = new GameObject();
 
 	TextureManager::get().loadTexture("background", "assets/background_02_static.png");
 	TextureManager::get().loadTexture("play", "assets/main_button_1.png");
 	TextureManager::get().loadTexture("music", "assets/main_button_2.png");
 	TextureManager::get().loadTexture("logo", "assets/game_logo_small.png");
+	TextureManager::get().loadFont("neuropol", "assets/fonts/neuropol.ttf", 30);
 
 	gb->addComponent<Sprite>(Game::get().getRenderer(), "background");
 	playButtonObj->addComponent<Sprite>(Game::get().getRenderer(), "play");
 	musicButtonObj->addComponent<Sprite>(Game::get().getRenderer(), "music");
 	logoObj->addComponent<Sprite>(Game::get().getRenderer(), "logo");
+	lable->addComponent<UILabel>(Game::get().getRenderer(), 500, 500, "neuropol");
 	//playLabelObj->addComponent<UILabel>(Game::get().getRenderer(), "Play", 10, 10);
 
 	logoObj->getComponent<Transform>().position = Vector2<float>(850.0f, 100.0f);
@@ -32,7 +35,10 @@ void MainScene::init(GameObjectManager* manager)
 	playButtonObj->getComponent<Transform>().scale = Vector2<float>(0.4f, 0.4f);
 	musicButtonObj->getComponent<Transform>().scale = Vector2<float>(0.5f, 0.5f);
 	logoObj->getComponent<Transform>().scale = Vector2<float>(1.5f, 1.5f);
+	lable->getComponent<UILabel>().setFontColor({255,32,21}); // redish but if u want it white u can comment that or give it 255,255,255
+	lable->getComponent<UILabel>().setText("Heddssdllo");
 
+	manager->addGameObject(lable);
 	manager->addGameObject(gb);
 	manager->addGameObject(playButtonObj);
 	manager->addGameObject(musicButtonObj);
