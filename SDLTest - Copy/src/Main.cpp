@@ -12,19 +12,19 @@ int main(int argc, char** argv){
 
     const int FPS = 60;
     const int frameDelay = 1000 / FPS;
-    Uint32 startingFrame;
+    Uint32 startingFrame = 0;
     float frameTime;
 
     while(game.isRunning()){
-        startingFrame = SDL_GetTicks();
         frameTime = SDL_GetTicks() - startingFrame;
+        startingFrame = SDL_GetTicks();
         sdlEvent.handle();
         game.update(frameTime);
         game.render();
         if (frameDelay > frameTime) {
             SDL_Delay(frameDelay - frameTime);
         }
-
+         
     }
 
     sdlEvent.clean();
