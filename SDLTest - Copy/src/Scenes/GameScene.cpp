@@ -20,7 +20,7 @@ void GameScene::init(GameObjectManager* manager)
 	playerObj->addComponent<Sprite>(Game::get().getRenderer(), "player");
 
 	//playerObj->getComponent<Transform>().rotation = 180.0f;
-
+	this->manager = manager;
 	manager->addGameObject(gb);
 	manager->addGameObject(playerObj);
 }
@@ -46,13 +46,17 @@ void GameScene::update(float deltaTime)
 	}
 
 	if (SDLEvent::get().getButtonDown(LEFT) == true && isClicked == false) {
+		isClicked = true;
 		std::cout << SDLEvent::get().getMousePos() << std::endl;
 		GameObject* shot = new GameObject();
 		TextureManager::get().loadTexture("bullet", "assets/game_logo_small.png");
+		
 		shot->addComponent<Sprite>(Game::get().getRenderer(), "bullet");
 		//shot->addComponent<Projectile>(shot, 1);
+		/*
+		*/
 		manager->addGameObject(shot);
-		isClicked = true;
+
 	}
 	else if (SDLEvent::get().getButtonDown(LEFT) == false && isClicked == true) {
 		isClicked = false;
