@@ -152,8 +152,5 @@
     <ClInclude Include="src\Game Engine\SDL Events\SDLEvent.h">
       <Filter>Header Files\Game Engine\SDL Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game Engine\GameObject\Components\Projectile.h">
-      <Filter>Header Files\Game Engine\GameObject\Components</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
