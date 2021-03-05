@@ -24,16 +24,26 @@ void SoundManager::printMixError(std::string error)
 	}
 
 
-	void SoundManager::musicVolume(int volume)
+	void SoundManager::setVolume(int volume)
 	{
 		Mix_VolumeMusic(volume);
 	}
 
 
-	void SoundManager::StopMusic(std::string id)
+	void SoundManager::toggleMusic()
 	{
-		if (Mix_PlayMusic(musicClips[id], 0) == -1)
-			printMixError(Mix_GetError());
+		//If the music is paused
+		if (Mix_PausedMusic() == 1)
+		{
+			//Resume the music
+			Mix_ResumeMusic();
+		}
+		//If the music is playing
+		else
+		{
+			//Pause the music
+			Mix_PauseMusic();
+		}
 	}
 
 	void SoundManager::loadMusic(std::string id, std::string source)

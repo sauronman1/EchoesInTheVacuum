@@ -9,6 +9,7 @@
 #include "Game Engine/Essentials/SceneManagement/SceneManager.h"
 #include "Scenes/GameScene.h"
 #include "Scenes/MainScene.h"
+#include "Game Engine/Essentials/SoundManager/SoundManager.h"
 
 Game* Game::s_instance = nullptr;
 GameObjectManager* manager = new GameObjectManager();
@@ -35,6 +36,17 @@ void Game::init(){
     }
     MainScene* mainScene = new MainScene();
     SceneManager::get().init(manager, mainScene);
+   
+
+
+    SoundManager::Instance()->setVolume(100); // Value from 0 to 120
+    SoundManager::Instance()->loadMusic("mainMusic","assets/_Art/Audio/gameMusic.mp3");
+    SoundManager::Instance()->playMusic("mainMusic");
+
+   // SoundManager::Instance()->toggleMusic();
+   // SoundManager::Instance()->toggleMusic();
+
+
     //Sleep(8000);
     /*TextureManager::get().clean();
     SceneManager::get().setCurrentScene(mainScene);*/

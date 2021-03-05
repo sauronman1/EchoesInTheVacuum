@@ -13,18 +13,18 @@ using MusicClips = std::map<std::string, Mix_Music*>;
 class SoundManager
 {
 public:
-	inline static SoundManager* instance() {
+	inline static SoundManager* Instance() {
 		return s_Instance = (s_Instance != nullptr) ? s_Instance : new SoundManager();
 	}
 
-	void StopMusic(std::string id);
-	void loadMusic(std::string, std::string source);
+	void toggleMusic();
+	void loadMusic(std::string id , std::string source);
 	void playEffect(std::string id);
 	void loadEffect(std::string id, std::string source);
 	void cleanSounds();
 	void playMusic(std::string id);
 	// Volume from 0 to 128 as per documentation 
-	void musicVolume(int volume);
+	void setVolume(int volume);
 
 private:
 	SoundManager();
