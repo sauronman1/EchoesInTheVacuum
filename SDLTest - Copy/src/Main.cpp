@@ -2,7 +2,6 @@
 #include "Game Engine/SDL Events/SDLEvent.h"
 
 int main(int argc, char** argv){
-    //HEY MAROUN!!!
   //  Timer& timer = Timer::get();
     Game& game = Game::get();
     SDLEvent& sdlEvent = SDLEvent::get();
