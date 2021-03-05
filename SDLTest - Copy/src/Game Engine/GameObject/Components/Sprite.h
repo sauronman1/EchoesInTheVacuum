@@ -15,7 +15,7 @@ class Sprite : public Component {
         Sprite(SDL_Renderer* target, std::string textureid): rTarget(target), textureID(textureid) {}
 
         bool init() override {
-            transform = &entity->getComponent<Transform>();
+            transform = &gameObject->getComponent<Transform>();
             texture = TextureManager::get().getTexture(textureID);
             SDL_QueryTexture(texture, nullptr, nullptr, &width, &height);
 

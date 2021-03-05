@@ -39,7 +39,7 @@ class GameObject {
         template<typename T, typename... TArgs>
         inline T& addComponent(TArgs&&... args){
             T* comp(new T(std::forward<TArgs>(args)...));
-            comp->entity = this;
+            comp->gameObject = this;
             std::unique_ptr<Component> uniquePtr { comp };
             components.emplace_back(std::move(uniquePtr));
 

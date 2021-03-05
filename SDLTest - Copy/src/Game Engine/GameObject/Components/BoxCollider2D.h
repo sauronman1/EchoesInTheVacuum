@@ -21,7 +21,7 @@ class BoxCollider2D : public Component{
         ~BoxCollider2D() = default;
 
         bool init() override final{
-            transform = &entity->getComponent<Transform>();
+            transform = &gameObject->getComponent<Transform>();
             return true;
         }
 

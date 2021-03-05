@@ -24,7 +24,7 @@ void MainScene::init(GameObjectManager* manager)
 	playButtonObj->addComponent<Sprite>(Game::get().getRenderer(), "play");
 	musicButtonObj->addComponent<Sprite>(Game::get().getRenderer(), "music");
 	logoObj->addComponent<Sprite>(Game::get().getRenderer(), "logo");
-	playLabelObj->addComponent<UILabel>(Game::get().getRenderer(), "Play", 10, 10);
+	//playLabelObj->addComponent<UILabel>(Game::get().getRenderer(), "Play", 10, 10);
 
 	logoObj->getComponent<Transform>().position = Vector2<float>(850.0f, 100.0f);
 	playButtonObj->getComponent<Transform>().position = Vector2<float>(750.0f,350.0f);

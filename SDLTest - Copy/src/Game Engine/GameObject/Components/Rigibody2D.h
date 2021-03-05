@@ -2,6 +2,7 @@
 
 #include "Component.h"
 #include "../../Math/Vector2.h"
+#include "Transform.h"
 
 constexpr float GRAVITY = 10.0f;
 
@@ -26,7 +27,7 @@ class Rigibody2D : public Component {
         }
 
         bool init() override final {
-                transform = &entity->getComponent<Transform>();
+                transform = &gameObject->getComponent<Transform>();
                 return true;
         }
 

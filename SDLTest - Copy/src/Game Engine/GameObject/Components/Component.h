@@ -7,7 +7,7 @@ class Component {
         Component() = default;
         ~Component() = default;
 
-        GameObject* entity;
+        GameObject* gameObject;
         virtual bool init(){return true;}
         virtual void draw(){}
         virtual void update(float deltaTime){}
