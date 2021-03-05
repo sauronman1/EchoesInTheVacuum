@@ -36,15 +36,6 @@ void Game::init(){
     }
     MainScene* mainScene = new MainScene();
     SceneManager::get().init(manager, mainScene);
-   
-
-
-    SoundManager::Instance()->setVolume(100); // Value from 0 to 120
-    SoundManager::Instance()->loadMusic("mainMusic","assets/_Art/Audio/gameMusic.mp3");
-    SoundManager::Instance()->playMusic("mainMusic");
-
-   // SoundManager::Instance()->toggleMusic();
-   // SoundManager::Instance()->toggleMusic();
 
 
     //Sleep(8000);
