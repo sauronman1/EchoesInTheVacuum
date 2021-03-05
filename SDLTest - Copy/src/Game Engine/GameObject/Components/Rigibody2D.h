@@ -37,9 +37,10 @@ class Rigibody2D : public Component {
             transform->translate(velocity);
         }
 
-        void addForce(Vector2<float> F){
+        void ChangeForce(Vector2<float> F){
             force = F;
         }
+
         void NoForce() {
             force = { 0,0 };
         }
