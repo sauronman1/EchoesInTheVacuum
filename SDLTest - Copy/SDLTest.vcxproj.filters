@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Game Engine">
+      <UniqueIdentifier>{7decbbe4-b4b7-45dc-a1e4-e208807889a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game Engine\Essentials">
+      <UniqueIdentifier>{253013a9-3ae0-41ca-9227-731eb6fa7108}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game Engine">
+      <UniqueIdentifier>{35ed0d04-6943-440a-bd66-16e1ec20f210}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game Engine\Essentials">
+      <UniqueIdentifier>{539f2382-d6ea-43e8-87c2-322bf72aab7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game Engine\Math">
+      <UniqueIdentifier>{152b997f-5022-4de1-a0b8-7fb012799cc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game Engine\Essentials\Collision">
+      <UniqueIdentifier>{4d8514a3-03fe-4967-8441-ddf95fe3e70e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game Engine\Essentials\Collision">
+      <UniqueIdentifier>{b5ea32e3-0f6a-40ed-ac67-6d23ea586a6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game Engine\GameObject">
+      <UniqueIdentifier>{d317dc27-150c-474e-ac0c-c4c0cbf1e00e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game Engine\GameObject">
+      <UniqueIdentifier>{f7f8746b-24df-4740-a39e-c42ad240ff08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game Engine\GameObject\Components">
+      <UniqueIdentifier>{77e35a72-2c25-47f2-b711-dde3cf050cad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game Engine\SDL Events">
+      <UniqueIdentifier>{0212c6f4-7ac5-44e2-9a4b-59e62fce80e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game Engine\SDL Events">
+      <UniqueIdentifier>{bf36673f-b2dc-4803-952d-5dd1fd4520ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game Engine\Essentials\SceneManagement">
+      <UniqueIdentifier>{ff50908f-9639-4f2a-9640-a6b6e2d336f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game Engine\Essentials\SceneManagement">
+      <UniqueIdentifier>{53b526d2-b392-4697-82b3-44d27000d877}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scenes">
+      <UniqueIdentifier>{b4792de0-22c6-4cdc-8e09-1cc00957c74c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Scenes">
+      <UniqueIdentifier>{4ca90b87-9c65-439a-97bc-72c77a75160f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Game Engine\Essentials\TextureManager.cpp">
+      <Filter>Source Files\Game Engine\Essentials</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game Engine\Essentials\CommonFunctions.cpp">
+      <Filter>Source Files\Game Engine\Essentials</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game Engine\Essentials\Collision\Collision2D.cpp">
+      <Filter>Source Files\Game Engine\Essentials\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game Engine\GameObject\GameObjectManager.cpp">
+      <Filter>Source Files\Game Engine\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game Engine\Essentials\SceneManagement\SceneManager.cpp">
+      <Filter>Source Files\Game Engine\Essentials\SceneManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scenes\GameScene.cpp">
+      <Filter>Source Files\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scenes\MainScene.cpp">
+      <Filter>Source Files\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game Engine\SDL Events\SDLEvent.cpp">
+      <Filter>Source Files\Game Engine\SDL Events</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Game Engine\Essentials\CommonFunctions.h">
+      <Filter>Header Files\Game Engine\Essentials</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game Engine\Essentials\TextureManager.h">
+      <Filter>Header Files\Game Engine\Essentials</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game Engine\Math\Vector2.h">
+      <Filter>Header Files\Game Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game Engine\Essentials\Collision\Collision2D.h">
+      <Filter>Header Files\Game Engine\Essentials\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game Engine\GameObject\GameObject.h">
+      <Filter>Header Files\Game Engine\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game Engine\GameObject\GameObjectManager.h">
+      <Filter>Header Files\Game Engine\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game Engine\GameObject\Components\BoxCollider2D.h">
+      <Filter>Header Files\Game Engine\GameObject\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game Engine\GameObject\Components\Component.h">
+      <Filter>Header Files\Game Engine\GameObject\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game Engine\GameObject\Components\ComponentTypes.h">
+      <Filter>Header Files\Game Engine\GameObject\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game Engine\GameObject\Components\Rigibody2D.h">
+      <Filter>Header Files\Game Engine\GameObject\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game Engine\GameObject\Components\Sprite.h">
+      <Filter>Header Files\Game Engine\GameObject\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game Engine\GameObject\Components\Transform.h">
+      <Filter>Header Files\Game Engine\GameObject\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game Engine\GameObject\Components\UILabel.h">
+      <Filter>Header Files\Game Engine\GameObject\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game Engine\Essentials\SceneManagement\Scene.h">
+      <Filter>Header Files\Game Engine\Essentials\SceneManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game Engine\Essentials\SceneManagement\SceneManager.h">
+      <Filter>Header Files\Game Engine\Essentials\SceneManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scenes\GameScene.h">
+      <Filter>Header Files\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scenes\MainScene.h">
+      <Filter>Header Files\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game Engine\SDL Events\SDLEvent.h">
+      <Filter>Header Files\Game Engine\SDL Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game Engine\GameObject\Components\Projectile.h">
+      <Filter>Header Files\Game Engine\GameObject\Components</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
