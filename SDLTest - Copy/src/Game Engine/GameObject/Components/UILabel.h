@@ -7,7 +7,7 @@
 #include "Component.h"
 #include "../../Essentials/TextureManager.h"
 
-const std::string ARIAL = "Arial";
+const std::string neuropol = "neuropol";
 constexpr SDL_Color DEFAULT_LABEL_COLOR = {255, 255, 255, 255};
 
 class UILabel: public Component {
@@ -62,5 +62,5 @@ class UILabel: public Component {
         SDL_Color fontColor = DEFAULT_LABEL_COLOR;
 
         std::string text = "";
-        std::string fontFamilly = ARIAL;
+        std::string fontFamilly = neuropol;
 };
