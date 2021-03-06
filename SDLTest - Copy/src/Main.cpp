@@ -10,7 +10,7 @@ int main(int argc, char** argv){
     sdlEvent.init();
     game.init();
 
-    const int FPS = 60;
+    const int FPS = 15;
     const int frameDelay = 1000 / FPS;
     Uint32 startingFrame = 0;
     float frameTime;
@@ -19,7 +19,7 @@ int main(int argc, char** argv){
         frameTime = SDL_GetTicks() - startingFrame;
         startingFrame = SDL_GetTicks();
         sdlEvent.handle();
-        game.update(frameTime);
+        game.update(frameTime / 1000);
         game.render();
         if (frameDelay > frameTime) {
             SDL_Delay(frameDelay - frameTime);
