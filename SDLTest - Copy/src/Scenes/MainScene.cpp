@@ -70,11 +70,7 @@ void MainScene::init(GameObjectManager* manager)
 
 }
 
-void MainScene::sceneClean() {
-	manager->eraseGameObject(playButtonObj);
-	manager->eraseGameObject(musicButtonObj);
 
-}
 void MainScene::update(float deltaTime)
 {
 	if (sceneFinished == true) { return; }
