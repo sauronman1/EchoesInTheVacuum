@@ -31,21 +31,20 @@ void GameScene::sceneClean() {
 
 void GameScene::update(float deltaTime)
 {
-	//CommonFunctions::printConsoleMessage(CommonFunctions::numToString(deltaTime));
 	if (SDLEvent::get().getKeyValue(SDLK_a) == 1 && playerObj->getComponent<Transform>().position.x > 0) {
-		playerObj->getComponent<Transform>().translate(Vector2<float>(-moveSpeed, 0));
+		playerObj->getComponent<Transform>().translate(Vector2<float>(-moveSpeed * 100, 0) * deltaTime);
 	}
 	if (SDLEvent::get().getKeyValue(SDLK_d) == 1 && playerObj->getComponent<Transform>().position.x < 1600) {
-		playerObj->getComponent<Transform>().translate(Vector2<float>(moveSpeed, 0));
+		playerObj->getComponent<Transform>().translate(Vector2<float>(moveSpeed * 100, 0) * deltaTime);
 	}
 	if (SDLEvent::get().getKeyValue(SDLK_w) == 1 && playerObj->getComponent<Transform>().position.y > 0) {
-		playerObj->getComponent<Transform>().translate(Vector2<float>(0, -moveSpeed));
+		playerObj->getComponent<Transform>().translate(Vector2<float>(0, -moveSpeed * 100) * deltaTime);
 	}
 	if (SDLEvent::get().getKeyValue(SDLK_s) == 1 && playerObj->getComponent<Transform>().position.y < 850) {
-		playerObj->getComponent<Transform>().translate(Vector2<float>(0, moveSpeed));
+		playerObj->getComponent<Transform>().translate(Vector2<float>(0, moveSpeed * 100) * deltaTime);
 	}
 
-	if (SDLEvent::get().getButtonDown(LEFT) == true && isClicked == false) {
+	if ((SDLEvent::get().getButtonDown(LEFT) == true || SDLEvent::get().getKeyValue(SDLK_SPACE) == 1) && isClicked == false) {
 		isClicked = true;
 		std::cout << SDLEvent::get().getMousePos() << std::endl;
 		GameObject* shot = new GameObject();

@@ -19,7 +19,7 @@ int main(int argc, char** argv){
         frameTime = SDL_GetTicks() - startingFrame;
         startingFrame = SDL_GetTicks();
         sdlEvent.handle();
-        game.update(frameTime);
+        game.update(frameTime / 1000);
         game.render();
         if (frameDelay > frameTime) {
             SDL_Delay(frameDelay - frameTime);
