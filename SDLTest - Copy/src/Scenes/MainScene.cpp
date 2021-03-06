@@ -84,7 +84,6 @@ void MainScene::update(float deltaTime)
 		if (SDLEvent::get().getMousePos().x > 750 && SDLEvent::get().getMousePos().x < 1200 && SDLEvent::get().getMousePos().y > 350 && SDLEvent::get().getMousePos().y < 470) {
 			std::cout << SDLEvent::get().getMousePos() << std::endl;
 			sceneFinished = false;
-			sceneClean();
 			GameScene* mainScene = new GameScene();
 			SceneManager::get().setCurrentScene(mainScene);
 
