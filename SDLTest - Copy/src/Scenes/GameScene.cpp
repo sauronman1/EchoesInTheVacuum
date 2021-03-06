@@ -44,7 +44,7 @@ void GameScene::update(float deltaTime)
 		playerObj->getComponent<Transform>().translate(Vector2<float>(0, moveSpeed * 100) * deltaTime);
 	}
 
-	if (SDLEvent::get().getButtonDown(LEFT) == true && isClicked == false) {
+	if ((SDLEvent::get().getButtonDown(LEFT) == true || SDLEvent::get().getKeyValue(SDLK_SPACE) == 1) && isClicked == false) {
 		isClicked = true;
 		std::cout << SDLEvent::get().getMousePos() << std::endl;
 		GameObject* shot = new GameObject();
