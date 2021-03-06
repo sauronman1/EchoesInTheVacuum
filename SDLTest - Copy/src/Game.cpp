@@ -34,9 +34,7 @@ void Game::init(){
     if (!renderer) {
         CommonFunctions::printErrorMessage(SDL_GetError());
     }
-    MainScene* mainScene = new MainScene();
-    SceneManager::get().init(manager, mainScene);
-
+    SceneManager::get().init(manager);
 
     //Sleep(8000);
     /*TextureManager::get().clean();

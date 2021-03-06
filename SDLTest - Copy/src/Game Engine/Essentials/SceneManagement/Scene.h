@@ -5,9 +5,10 @@ class Scene {
 public:
 	Scene() = default;
 	~Scene() = default;
-	virtual void init(GameObjectManager* manager) { this->manager = manager; }
+	Scene(GameObjectManager* manager)  { this->manager = manager; };
+	virtual void init() {};
 	virtual void update(float deltaTime) {}
-	virtual void sceneClean() {}
+
 protected:
 	GameObjectManager* manager;
 	bool sceneFinished;

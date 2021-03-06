@@ -15,8 +15,10 @@ class GameObjectManager {
         void addGameObject(GameObject* player);
         void eraseGameObject(GameObject* player);
         GameObject* cloneGameObject(GameObject* player);
+        inline void cleanGameObject() { gameObjects.clear(); };
 
-    private:
+private:
         std::vector<std::unique_ptr<GameObject>> gameObjects;
+
 };
 

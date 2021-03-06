@@ -3,9 +3,11 @@
 class GameScene : public Scene
 {
 public:
-	void init(GameObjectManager* manager) override;
+	GameScene(GameObjectManager* manager) {
+		this->manager = manager;
+	};
+	void init() override;
 	void update(float deltaTime) override;
-	void sceneClean() override;
 private:
 	bool isClicked = false;
 	GameObject* playerObj;

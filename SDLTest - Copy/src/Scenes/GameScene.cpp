@@ -7,8 +7,10 @@
 #include "../Game Engine/SDL Events/SDLEvent.h"
 #include "../Game Engine/GameObject/Components/Projectile.h"
 
-void GameScene::init(GameObjectManager* manager)
+void GameScene::init()
 {
+	this->manager->cleanGameObject();
+
 	GameObject* gb = new GameObject();
 	playerObj = new GameObject();
 	moveSpeed = 4;
@@ -25,9 +27,6 @@ void GameScene::init(GameObjectManager* manager)
 	manager->addGameObject(playerObj);
 }
 
-void GameScene::sceneClean() {
-
-}
 
 void GameScene::update(float deltaTime)
 {
