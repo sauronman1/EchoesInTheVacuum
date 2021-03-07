@@ -25,12 +25,10 @@ void GameScene::init(GameObjectManager* manager)
 	manager->addGameObject(playerObj);
 }
 
-void GameScene::sceneClean() {
-
-}
-
 void GameScene::update(float deltaTime)
 {
+	timer += deltaTime;
+
 	if (SDLEvent::get().getKeyValue(SDLK_a) == 1 && playerObj->getComponent<Transform>().position.x > 0) {
 		playerObj->getComponent<Transform>().translate(Vector2<float>(-moveSpeed * 100, 0) * deltaTime);
 	}
@@ -44,18 +42,18 @@ void GameScene::update(float deltaTime)
 		playerObj->getComponent<Transform>().translate(Vector2<float>(0, moveSpeed * 100) * deltaTime);
 	}
 
-	if ((SDLEvent::get().getButtonDown(LEFT) == true || SDLEvent::get().getKeyValue(SDLK_SPACE) == 1) && isClicked == false) {
+	if (timer > coolDown && (SDLEvent::get().getButtonDown(LEFT) == true || SDLEvent::get().getKeyValue(SDLK_SPACE) == 1) && isClicked == false) {
 		isClicked = true;
 		std::cout << SDLEvent::get().getMousePos() << std::endl;
 		GameObject* shot = new GameObject();
+		shot->getComponent<Transform>().position = playerObj->getComponent<Transform>().position;
 		TextureManager::get().loadTexture("bullet", "assets/game_logo_small.png");
 		
 		shot->addComponent<Sprite>(Game::get().getRenderer(), "bullet");
-		//shot->addComponent<Projectile>(shot, 1);
-		/*
-		*/
-		manager->addGameObject(shot);
+		shot->addComponent<Projectile>(shot, 10);
 
+		manager->addGameObject(shot);
+		timer = 0;
 	}
 	else if (SDLEvent::get().getButtonDown(LEFT) == false && isClicked == true) {
 		isClicked = false;

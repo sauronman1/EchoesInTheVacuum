@@ -1,6 +1,7 @@
 #pragma once
 #include "Component.h"
 #include "../GameObject.h"
+#include "Rigibody2D.h"
 
 class Projectile : public Component {
 
@@ -9,11 +10,15 @@ public:
     ~Projectile() = default;
 
     Projectile(GameObject* projectile, float speed) {
-        do {
-            projectile->getComponent<Transform>().translate(Vector2<float>(speed, 0));
-        } while (projectile->getComponent<Transform>().position.x < 1200);
+        flySpeed = speed;
+        projectileObj = projectile;
+    }
+
+    void update(float deltaTime) override final {
+        projectileObj->getComponent<Transform>().translate(Vector2<float>(10 * flySpeed * deltaTime, 0));
     }
     
 private:
-    float speed;
+    float flySpeed;
+    GameObject* projectileObj;
 };
