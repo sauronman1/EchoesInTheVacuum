@@ -25,6 +25,7 @@ void GameScene::init(GameObjectManager* manager)
 	manager->addGameObject(playerObj);
 }
 
+
 void GameScene::update(float deltaTime)
 {
 	timer += deltaTime;

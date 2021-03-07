@@ -18,5 +18,6 @@ private:
 	GameObject* playLable;
 	GameObject* toggleLable;
 	GameObject* toggleIndicator;
+	GameObject* playSymbol;
 };
 
