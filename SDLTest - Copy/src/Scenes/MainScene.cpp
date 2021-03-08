@@ -8,7 +8,7 @@
 #include "../Game Engine/SDL Events/SDLEvent.h"
 #include "../Game Engine/Essentials/SoundManager/SoundManager.h"
 
-void MainScene::init(GameObjectManager* manager)
+void MainScene::init()
 {	
 	GameObject* gb = new GameObject();
 	playButtonObj = new GameObject();
@@ -88,9 +88,7 @@ void MainScene::update(float deltaTime)
 		if (SDLEvent::get().getMousePos().x > 750 && SDLEvent::get().getMousePos().x < 1200 && SDLEvent::get().getMousePos().y > 350 && SDLEvent::get().getMousePos().y < 470) {
 			std::cout << SDLEvent::get().getMousePos() << std::endl;
 			sceneFinished = false;
-			sceneClean();
-			GameScene* mainScene = new GameScene();
-			SceneManager::get().setCurrentScene(mainScene);
+			SceneManager::get().goToNextScene(1);
 
 		}
 		if (SDLEvent::get().getMousePos().x > 750 && SDLEvent::get().getMousePos().x < 1180 && SDLEvent::get().getMousePos().y > 550 && SDLEvent::get().getMousePos().y < 680) {
