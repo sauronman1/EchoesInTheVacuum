@@ -28,6 +28,7 @@ void GameScene::init()
 	manager->addGameObject(gb);
 	manager->addGameObject(playerObj);
 	manager->addGameObject(enemyObj);
+	playerObj->addComponent<BoxCollider2D>(Game::get().getRenderer(), 200, 200);
 	enemyObj->getComponent<Transform>().position = Vector2<float>(1700, 500) ;
 	enemyObj->addComponent<BoxCollider2D>(Game::get().getRenderer(), 200, 200);
 
@@ -53,10 +54,10 @@ void GameScene::update(float deltaTime)
 		playerObj->getComponent<Transform>().translate(Vector2<float>(0, moveSpeed * 100) * deltaTime);
 	}
 
-	/*if (col.AABB(playerObj->getComponent<BoxCollider2D>(), enemyObj->getComponent<BoxCollider2D>())) {
+	if (col.AABB(playerObj->getComponent<BoxCollider2D>(), enemyObj->getComponent<BoxCollider2D>())) {
 		std::cout << "hit" << std::endl;
 
-	}*/
+	}
 
 	if (timer > coolDown && (SDLEvent::get().getButtonDown(LEFT) == true || SDLEvent::get().getKeyValue(SDLK_SPACE) == 1) && isClicked == false) {
 		isClicked = true;

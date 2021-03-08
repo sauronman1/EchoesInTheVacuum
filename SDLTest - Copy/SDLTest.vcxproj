@@ -30,6 +30,9 @@
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Scenes\GameScene.cpp" />
     <ClCompile Include="src\Scenes\MainScene.cpp" />
+    <ClCompile Include="src\Scripts\Common\NPC.cpp" />
+    <ClCompile Include="src\Scripts\Enemy\Enemy.cpp" />
+    <ClCompile Include="src\Scripts\Player\Ship.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game Engine\Essentials\Collision\Collision2D.h" />
@@ -53,6 +56,9 @@
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\Scenes\GameScene.h" />
     <ClInclude Include="src\Scenes\MainScene.h" />
+    <ClInclude Include="src\Scripts\Common\NPC.h" />
+    <ClInclude Include="src\Scripts\Enemy\Enemy.h" />
+    <ClInclude Include="src\Scripts\Player\Ship.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

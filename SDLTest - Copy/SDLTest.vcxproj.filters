@@ -67,6 +67,30 @@
     <Filter Include="Source Files\Game Engine\Essentials\SoundManager">
       <UniqueIdentifier>{96bb683e-c271-47e0-aeab-b63686eabe00}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Scripts">
+      <UniqueIdentifier>{46a7bc09-4cc1-4bea-9431-79cbe16b2d4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Scripts\Common">
+      <UniqueIdentifier>{98a3307e-6e62-49e1-903f-a410d86e2409}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Scripts\Enemy">
+      <UniqueIdentifier>{df9df376-b798-4c73-a1e6-7fc0d7206361}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Scripts\Player">
+      <UniqueIdentifier>{f4fc6539-93dc-4e5e-bb46-02cb1d59955f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scripts">
+      <UniqueIdentifier>{c57b3926-6c7d-4789-8fca-52a598b3785a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scripts\Common">
+      <UniqueIdentifier>{5b799787-8502-4cc5-a1e5-4d75ed42ed9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scripts\Enemy">
+      <UniqueIdentifier>{3208ebfc-f815-4bd5-9f62-22527020f1dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scripts\Player">
+      <UniqueIdentifier>{bd69c086-e2e3-48b6-a03d-581a6fad34d9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game Engine\Essentials\TextureManager.cpp">
@@ -101,6 +125,15 @@
     </ClCompile>
     <ClCompile Include="src\Game Engine\Essentials\SoundManager\SoundManager.cpp">
       <Filter>Source Files\Game Engine\Essentials\SoundManager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scripts\Common\NPC.cpp">
+      <Filter>Source Files\Scripts\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scripts\Enemy\Enemy.cpp">
+      <Filter>Source Files\Scripts\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scripts\Player\Ship.cpp">
+      <Filter>Source Files\Scripts\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -166,6 +199,15 @@
     </ClInclude>
     <ClInclude Include="src\Game Engine\Essentials\SoundManager\SoundManager.h">
       <Filter>Header Files\Game Engine\Essentials\SoundManager</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scripts\Player\Ship.h">
+      <Filter>Header Files\Scripts\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scripts\Enemy\Enemy.h">
+      <Filter>Header Files\Scripts\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scripts\Common\NPC.h">
+      <Filter>Header Files\Scripts\Common</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
