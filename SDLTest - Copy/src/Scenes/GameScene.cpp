@@ -6,13 +6,14 @@
 #include "../Game Engine/Essentials/SceneManagement/SceneManager.h"
 #include "../Game Engine/SDL Events/SDLEvent.h"
 #include "../Game Engine/GameObject/Components/Projectile.h"
+#include "../Game Engine/Essentials/Collision/Collision2D.h"
 
 void GameScene::init()
 {
 	this->manager->cleanGameObject();
-
 	GameObject* gb = new GameObject();
 	playerObj = new GameObject();
+	enemyObj = new GameObject();
 	moveSpeed = 4;
 
 	TextureManager::get().loadTexture("nebula", "assets/background_02_static.png");
@@ -20,16 +21,23 @@ void GameScene::init()
 
 	gb->addComponent<Sprite>(Game::get().getRenderer(), "nebula");
 	playerObj->addComponent<Sprite>(Game::get().getRenderer(), "player");
+	enemyObj->addComponent<Sprite>(Game::get().getRenderer(), "player");
 	playerObj->getComponent<Transform>().rotation = 90;
 
 	this->manager = manager;
 	manager->addGameObject(gb);
 	manager->addGameObject(playerObj);
+	manager->addGameObject(enemyObj);
+	enemyObj->getComponent<Transform>().position = Vector2<float>(1700, 500) ;
+	enemyObj->addComponent<BoxCollider2D>(Game::get().getRenderer(), 200, 200);
+
 }
 
 
 void GameScene::update(float deltaTime)
 {
+	Collision2D col;
+
 	timer += deltaTime;
 
 	if (SDLEvent::get().getKeyValue(SDLK_a) == 1 && playerObj->getComponent<Transform>().position.x > 0) {
@@ -45,6 +53,11 @@ void GameScene::update(float deltaTime)
 		playerObj->getComponent<Transform>().translate(Vector2<float>(0, moveSpeed * 100) * deltaTime);
 	}
 
+	/*if (col.AABB(playerObj->getComponent<BoxCollider2D>(), enemyObj->getComponent<BoxCollider2D>())) {
+		std::cout << "hit" << std::endl;
+
+	}*/
+
 	if (timer > coolDown && (SDLEvent::get().getButtonDown(LEFT) == true || SDLEvent::get().getKeyValue(SDLK_SPACE) == 1) && isClicked == false) {
 		isClicked = true;
 		std::cout << SDLEvent::get().getMousePos() << std::endl;
@@ -52,9 +65,9 @@ void GameScene::update(float deltaTime)
 		Vector2<float> playerPos = playerObj->getComponent<Transform>().position;
 		shot->getComponent<Transform>().position = Vector2<float>(playerPos.x + 180, playerPos.y +55);
 		TextureManager::get().loadTexture("bullet", "assets/bullet_blaster_small_single.png");
-		
 		shot->addComponent<Sprite>(Game::get().getRenderer(), "bullet");
 		shot->addComponent<Projectile>(shot, 10);
+		shot->addComponent<BoxCollider2D>(Game::get().getRenderer(), 50, 50);
 		shot->getComponent<Transform>().rotation = 90;
 
 		manager->addGameObject(shot);
