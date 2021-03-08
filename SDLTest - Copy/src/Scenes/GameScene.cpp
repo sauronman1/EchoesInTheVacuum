@@ -53,7 +53,7 @@ void GameScene::update(float deltaTime)
 		TextureManager::get().loadTexture("bullet", "assets/game_logo_small.png");
 		
 		shot->addComponent<Sprite>(Game::get().getRenderer(), "bullet");
-		shot->addComponent<Projectile>(shot, 10);
+		shot->addComponent<Projectile>(shot, 1);
 
 		manager->addGameObject(shot);
 		timer = 0;

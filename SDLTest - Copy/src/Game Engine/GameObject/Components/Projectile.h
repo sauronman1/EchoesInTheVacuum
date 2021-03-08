@@ -12,10 +12,10 @@ public:
     Projectile(GameObject* projectile, float speed) {
         flySpeed = speed;
         projectileObj = projectile;
+        projectileObj->addComponent<Rigibody2D>(0, flySpeed, 0);
     }
 
     void update(float deltaTime) override final {
-        projectileObj->getComponent<Transform>().translate(Vector2<float>(10 * flySpeed * deltaTime, 0));
     }
     
 private:
