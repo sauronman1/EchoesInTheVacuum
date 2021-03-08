@@ -32,7 +32,7 @@ class Sprite : public Component {
         }
 
         void draw() override {
-            SDL_RenderCopyEx(rTarget, texture, &srcRect, &dstRect, 0, nullptr, textureFlip);
+            SDL_RenderCopyEx(rTarget, texture, &srcRect, &dstRect, transform->rotation, nullptr, textureFlip);
         }
 
         void update(float deltaTime) override {
