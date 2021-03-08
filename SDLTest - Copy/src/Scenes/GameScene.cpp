@@ -20,8 +20,8 @@ void GameScene::init()
 
 	gb->addComponent<Sprite>(Game::get().getRenderer(), "nebula");
 	playerObj->addComponent<Sprite>(Game::get().getRenderer(), "player");
+	playerObj->getComponent<Transform>().rotation = 90;
 
-	//playerObj->getComponent<Transform>().rotation = 180.0f;
 	this->manager = manager;
 	manager->addGameObject(gb);
 	manager->addGameObject(playerObj);
@@ -49,11 +49,13 @@ void GameScene::update(float deltaTime)
 		isClicked = true;
 		std::cout << SDLEvent::get().getMousePos() << std::endl;
 		GameObject* shot = new GameObject();
-		shot->getComponent<Transform>().position = playerObj->getComponent<Transform>().position;
-		TextureManager::get().loadTexture("bullet", "assets/game_logo_small.png");
+		Vector2<float> playerPos = playerObj->getComponent<Transform>().position;
+		shot->getComponent<Transform>().position = Vector2<float>(playerPos.x + 180, playerPos.y +55);
+		TextureManager::get().loadTexture("bullet", "assets/bullet_blaster_small_single.png");
 		
 		shot->addComponent<Sprite>(Game::get().getRenderer(), "bullet");
-		shot->addComponent<Projectile>(shot, 1);
+		shot->addComponent<Projectile>(shot, 10);
+		shot->getComponent<Transform>().rotation = 90;
 
 		manager->addGameObject(shot);
 		timer = 0;
