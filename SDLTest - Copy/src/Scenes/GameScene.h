@@ -12,5 +12,7 @@ private:
 	bool isClicked = false;
 	GameObject* playerObj;
 	float moveSpeed;
+	float timer = 0;
+	float coolDown = 1;
 };
 
