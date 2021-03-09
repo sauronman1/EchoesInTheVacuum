@@ -135,6 +135,9 @@
     <ClCompile Include="src\Scripts\Player\Ship.cpp">
       <Filter>Source Files\Scripts\Player</Filter>
     </ClCompile>
+    <ClCompile Include="src\Scripts\Common\BackgroundEffect.cpp">
+      <Filter>Source Files\Scripts\Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game Engine\Essentials\CommonFunctions.h">
@@ -207,6 +210,9 @@
       <Filter>Header Files\Scripts\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="src\Scripts\Common\NPC.h">
+      <Filter>Header Files\Scripts\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scripts\Common\BackgroundEffect.h">
       <Filter>Header Files\Scripts\Common</Filter>
     </ClInclude>
   </ItemGroup>

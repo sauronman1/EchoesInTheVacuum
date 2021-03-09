@@ -32,7 +32,7 @@ void GameScene::init()
 	playerObj->addComponent<BoxCollider2D>(Game::get().getRenderer(), 200, 200);
 	enemyObj->getComponent<Transform>().position = Vector2<float>(1700, 500) ;
 	enemyObj->addComponent<BoxCollider2D>(Game::get().getRenderer(), 200, 200);
-
+	enemyObj->addComponent<BackgroundEffect>(true, true, 20, 4);
 }
 
 
