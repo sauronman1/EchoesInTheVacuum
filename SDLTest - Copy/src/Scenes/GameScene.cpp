@@ -7,6 +7,7 @@
 #include "../Game Engine/SDL Events/SDLEvent.h"
 #include "../Game Engine/GameObject/Components/Projectile.h"
 #include "../Game Engine/Essentials/Collision/Collision2D.h"
+#include "../Scripts/Common/BackgroundEffect.h"
 
 void GameScene::init()
 {
@@ -56,7 +57,6 @@ void GameScene::update(float deltaTime)
 
 	if (col.AABB(playerObj->getComponent<BoxCollider2D>(), enemyObj->getComponent<BoxCollider2D>())) {
 		std::cout << "hit" << std::endl;
-
 	}
 
 	if (timer > coolDown && (SDLEvent::get().getButtonDown(LEFT) == true || SDLEvent::get().getKeyValue(SDLK_SPACE) == 1) && isClicked == false) {
