@@ -12,8 +12,10 @@ private:
 	bool isClicked = false;
 	GameObject* playerObj;
 	GameObject* enemyObj;
+	GameObject* scoreLabel;
 	float moveSpeed;
 	float timer = 0;
 	float coolDown = 1;
+	int score = 0;
 };
 

@@ -8,6 +8,7 @@
 #include "../Game Engine/GameObject/Components/Projectile.h"
 #include "../Game Engine/Essentials/Collision/Collision2D.h"
 #include "../Scripts/Common/BackgroundEffect.h"
+#include "../Game Engine/GameObject/Components/UILabel.h"
 
 void GameScene::init()
 {
@@ -15,24 +16,30 @@ void GameScene::init()
 	GameObject* gb = new GameObject();
 	playerObj = new GameObject();
 	enemyObj = new GameObject();
+	scoreLabel = new GameObject();
 	moveSpeed = 4;
 
 	TextureManager::get().loadTexture("nebula", "assets/background_02_static.png");
 	TextureManager::get().loadTexture("player", "assets/DKO-api-X1.png");
+	TextureManager::get().loadFont("ScoreLabel", "assets/fonts/neuropol.ttf", 30);
 
 	gb->addComponent<Sprite>(Game::get().getRenderer(), "nebula");
 	playerObj->addComponent<Sprite>(Game::get().getRenderer(), "player");
-	enemyObj->addComponent<Sprite>(Game::get().getRenderer(), "player");
 	playerObj->getComponent<Transform>().rotation = 90;
+	playerObj->addComponent<BoxCollider2D>(Game::get().getRenderer(), 180, 180);
+	enemyObj->addComponent<Sprite>(Game::get().getRenderer(), "player");
+	enemyObj->getComponent<Transform>().position = Vector2<float>(1700, 500);
+	enemyObj->addComponent<BoxCollider2D>(Game::get().getRenderer(), 180, 180);
+	enemyObj->addComponent<BackgroundEffect>(true, true, 20, 4);
+	scoreLabel->addComponent<UILabel>(Game::get().getRenderer(), "", 880, 60, "ScoreLabel");
+	scoreLabel->getComponent<UILabel>().setFontColor({ 0,128,0 });
+	scoreLabel->getComponent<UILabel>().setText("Score: " + std::to_string(score));
 
 	this->manager = manager;
 	manager->addGameObject(gb);
 	manager->addGameObject(playerObj);
 	manager->addGameObject(enemyObj);
-	playerObj->addComponent<BoxCollider2D>(Game::get().getRenderer(), 200, 200);
-	enemyObj->getComponent<Transform>().position = Vector2<float>(1700, 500) ;
-	enemyObj->addComponent<BoxCollider2D>(Game::get().getRenderer(), 200, 200);
-	enemyObj->addComponent<BackgroundEffect>(true, true, 20, 4);
+	manager->addGameObject(scoreLabel);
 }
 
 
@@ -57,6 +64,9 @@ void GameScene::update(float deltaTime)
 
 	if (col.AABB(playerObj->getComponent<BoxCollider2D>(), enemyObj->getComponent<BoxCollider2D>())) {
 		std::cout << "hit" << std::endl;
+		score++;
+		scoreLabel->getComponent<UILabel>().setText("Score: " + std::to_string(score));
+
 	}
 
 	if (timer > coolDown && (SDLEvent::get().getButtonDown(LEFT) == true || SDLEvent::get().getKeyValue(SDLK_SPACE) == 1) && isClicked == false) {
