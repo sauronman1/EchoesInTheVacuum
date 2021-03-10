@@ -9,21 +9,60 @@
 #include "../Game Engine/Essentials/Collision/Collision2D.h"
 #include "../Scripts/Common/BackgroundEffect.h"
 #include "../Game Engine/GameObject/Components/UILabel.h"
+#include "../Scripts/Enemy/Enemy.h"
 
+int enemyCount = 26;
+void GameScene::spawnEnemy(Vector2<int> rect, Vector2<float> position, Vector2<float> force)
+{
+	GameObject* gb = enemyPool.construct();
+
+	if (!gb->hasComponent<Rigibody2D>()) {
+		gb->addComponent<Rigibody2D>(0);
+		gb->addComponent<BoxCollider2D>(Game::get().getRenderer(), rect.x, rect.y);
+		gb->addComponent<Enemy>();
+		gb->addComponent<Sprite>(Game::get().getRenderer(), getRandomTexture());
+		gb->getComponent<Transform>().rotation = -90;
+		gb->getComponent<Transform>().scale = 0.35f;
+
+
+		manager->addGameObject(gb);
+	}
+
+	gb->getComponent<Transform>().setPosition(position);
+
+}
+std::string GameScene::getRandomTexture()
+{
+	int iRandomEnemyName = rand() % enemyCount + 1;
+	iRandomEnemyName = 26;
+	return "enemy" + CommonFunctions::numToString(iRandomEnemyName);
+}
 
 void loadTextures() {
-	for (int i = 1;i <= 26;i++) {
-	//	std::string name = "enemy" + CommonFunctions::numToString(i), "assets/_Art/Enemies/enemy" + CommonFunctions::numToString(i) + ".png";
-		//CommonFunctions::printConsoleMessage(name);
-		TextureManager::get().loadTexture("enemy" + CommonFunctions::numToString(i), "assets/_Art/Enemies/enemy" + CommonFunctions::numToString(i) + ".png");
+	for (int i = 1;i <= enemyCount;i++) {
+	TextureManager::get().loadTexture("enemy" + CommonFunctions::numToString(i), "assets/_Art/Enemies/enemy" + CommonFunctions::numToString(i) + ".png");
 	}
+
+	TextureManager::get().loadTexture("player", "assets/Ship.png");
+	TextureManager::get().loadTexture("bullet", "assets/bullet_blaster_small_single.png");
+
 	}
+
+
+void GameScene::update(float deltaTime)
+{
+
+}
 
 void GameScene::init()
 {
+	srand(time(NULL));
+
 	Game::get().unPauseGame();
 	loadTextures();
+	spawnEnemy({ 180,180 }, { 1000,500 }, {0,0});
 
+}
 	/*
 	Game::get().unPauseGame();
 
@@ -61,23 +100,9 @@ void GameScene::init()
 	
 }
 
-void GameScene::spawnEnemy(int poolID, Vector2<int> rect, Vector2<float> position, Vector2<float> force)
-{
-	GameObject* gb = enemyPool.construct();
 
-	if (!gb->hasComponent<Rigibody2D>()) {
-		gb->addComponent<Rigibody2D>(0, force.x, force.y);
-		gb->addComponent<BoxCollider2D>(Game::get().getRenderer(), rect.x, rect.y);
-		gb->addComponent<Sprite>(Game::get().getRenderer(), "player");
-	}
 
-	gb->getComponent<Transform>().setPosition(position);
-	*/
-}
 
-void GameScene::update(float deltaTime)
-{
-}
 	/*
 	Collision2D col;
 

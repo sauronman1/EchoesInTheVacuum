@@ -13,8 +13,10 @@ public:
 	void update(float deltaTime) override;
 private:
 	ObjectPool<GameObject, 100> enemyPool;
-	ObjectPool<GameObject, 100> bulletPool;
-	void spawnEnemy(int poolID, Vector2<int> rect, Vector2<float> position, Vector2<float> force);
+	ObjectPool<GameObject, 20> bulletPool;
+
+	void spawnEnemy(Vector2<int> rect, Vector2<float> position, Vector2<float> force);
+	std::string getRandomTexture();
 
 	bool isClicked = false;
 	GameObject* playerObj;
