@@ -12,13 +12,17 @@
 
 
 void loadTextures() {
-
-}
+	for (int i = 1;i <= 26;i++) {
+	//	std::string name = "enemy" + CommonFunctions::numToString(i), "assets/_Art/Enemies/enemy" + CommonFunctions::numToString(i) + ".png";
+		//CommonFunctions::printConsoleMessage(name);
+		TextureManager::get().loadTexture("enemy" + CommonFunctions::numToString(i), "assets/_Art/Enemies/enemy" + CommonFunctions::numToString(i) + ".png");
+	}
+	}
 
 void GameScene::init()
 {
 	Game::get().unPauseGame();
-
+	loadTextures();
 
 	/*
 	Game::get().unPauseGame();
