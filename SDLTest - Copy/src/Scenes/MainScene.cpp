@@ -73,8 +73,6 @@ void MainScene::init()
 	manager->addGameObject(toggleIndicator);
 	manager->addGameObject(playSymbol);
 
-	//sceneClean();
-	//SceneManager::get().goToNextScene(1);
 
 
 }
@@ -90,8 +88,6 @@ void MainScene::update(float deltaTime)
 		if (SDLEvent::get().getMousePos().x > 750 && SDLEvent::get().getMousePos().x < 1200 && SDLEvent::get().getMousePos().y > 350 && SDLEvent::get().getMousePos().y < 470) {
 			std::cout << "Go to New Scene" << std::endl;
 			sceneFinished = false;
-			//GameScene *scene = new GameScene(manager);
-			//scene->init();
 			Game::get().pauseGame();
 			SceneManager::get().goToNextScene(1);
 

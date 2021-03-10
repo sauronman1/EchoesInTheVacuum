@@ -25,6 +25,7 @@ void SceneManager::removeScene()
 
 void SceneManager::goToNextScene(int sceneID)
 {
+	removeScene();
 
 	if (sceneID == 0) {
 		MainScene* mainScene = new MainScene(manager);
@@ -33,7 +34,6 @@ void SceneManager::goToNextScene(int sceneID)
 	}
 	else if (sceneID == 1)
 	{
-		removeScene();
 		GameScene* gameScene = new GameScene(manager);
 		currentScene = gameScene;
 		setCurrentScene();

@@ -41,7 +41,7 @@ void Game::init(){
     SceneManager::get().init(manager);
 
 
-    clearColor = DARK;
+    clearColor = { 0, 0, 28 };
     running = true;
 }
 

@@ -14,22 +14,20 @@ void GameScene::init()
 {
 	Game::get().unPauseGame();
 
+
 	/*
-	//this->manager->cleanGameObject();
-	SceneManager::get().isPaused = false;
-	CommonFunctions::printConsoleMessage("unpaused");
+	Game::get().unPauseGame();
 
 	GameObject* gb = new GameObject();
 	playerObj = new GameObject();
 	enemyObj = new GameObject();
 	scoreLabel = new GameObject();
 	moveSpeed = 4;
-	CommonFunctions::printConsoleMessage("I am here");
 
 	TextureManager::get().loadTexture("nebula", "assets/background_02_static.png");
 	TextureManager::get().loadTexture("player", "assets/DKO-api-X1.png");
 	TextureManager::get().loadFont("ScoreLabel", "assets/fonts/neuropol.ttf", 30);
-	//TextureManager::get().loadTexture("nebula", "assets/space.png");
+	TextureManager::get().loadTexture("nebula", "assets/space.png");
 
 	//GameObject* background = new GameObject();
 	//background->addComponent<Sprite>(Game::get().getRenderer(), "nebula");
@@ -51,7 +49,7 @@ void GameScene::init()
 	manager->addGameObject(playerObj);
 	manager->addGameObject(enemyObj);
 	manager->addGameObject(scoreLabel);
-	*/
+	
 }
 
 void GameScene::spawnEnemy(int poolID, Vector2<int> rect, Vector2<float> position, Vector2<float> force)
@@ -65,6 +63,7 @@ void GameScene::spawnEnemy(int poolID, Vector2<int> rect, Vector2<float> positio
 	}
 
 	gb->getComponent<Transform>().setPosition(position);
+	*/
 }
 
 void GameScene::update(float deltaTime)
