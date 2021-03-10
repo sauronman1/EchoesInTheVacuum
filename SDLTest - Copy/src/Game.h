@@ -29,6 +29,14 @@ class Game {
             return running;
         }
 
+        inline void pauseGame() {
+            isPaused = true;
+        }
+
+        inline void unPauseGame() {
+            isPaused = false;
+        }
+
         inline SDL_Renderer* getRenderer(){
             return renderer;
         }
@@ -39,4 +47,5 @@ class Game {
         SDL_Color clearColor;
         SDL_Renderer* renderer;
         static Game* s_instance;
+        bool isPaused = false;
 };

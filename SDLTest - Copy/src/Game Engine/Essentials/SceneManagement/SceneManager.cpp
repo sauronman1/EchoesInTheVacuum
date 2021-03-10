@@ -11,11 +11,8 @@ void SceneManager::init(GameObjectManager* manager)
 }
 
 
-void SceneManager::setCurrentScene(Scene* scene)
+void SceneManager::setCurrentScene()
 {
-	removeScene();
-	currentScene = scene;
-	isPaused = false;
 	currentScene->init();
 }
 
@@ -28,15 +25,17 @@ void SceneManager::removeScene()
 
 void SceneManager::goToNextScene(int sceneID)
 {
-	isPaused = true;
 
 	if (sceneID == 0) {
 		MainScene* mainScene = new MainScene(manager);
-		setCurrentScene(mainScene);
+		currentScene = mainScene;
+		setCurrentScene();
 	}
 	else if (sceneID == 1)
 	{
+		removeScene();
 		GameScene* gameScene = new GameScene(manager);
-		setCurrentScene(gameScene);
+		currentScene = gameScene;
+		setCurrentScene();
 	}
 }

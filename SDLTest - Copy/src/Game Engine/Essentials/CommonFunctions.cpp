@@ -15,6 +15,7 @@ void CommonFunctions::printErrorMessage(std::string messageToPrint)
 
 }
 
+
 std::string CommonFunctions::numToString(int number)
 {
 

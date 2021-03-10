@@ -14,5 +14,6 @@ public:
 	static void printConsoleMessage(std::string messageToPrint);
 	static void printErrorMessage(std::string messageToPrint);
 
+
 };
 

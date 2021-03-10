@@ -12,16 +12,27 @@
 
 void GameScene::init()
 {
-	this->manager->cleanGameObject();
+	Game::get().unPauseGame();
+
+	/*
+	//this->manager->cleanGameObject();
+	SceneManager::get().isPaused = false;
+	CommonFunctions::printConsoleMessage("unpaused");
+
 	GameObject* gb = new GameObject();
 	playerObj = new GameObject();
 	enemyObj = new GameObject();
 	scoreLabel = new GameObject();
 	moveSpeed = 4;
+	CommonFunctions::printConsoleMessage("I am here");
 
 	TextureManager::get().loadTexture("nebula", "assets/background_02_static.png");
 	TextureManager::get().loadTexture("player", "assets/DKO-api-X1.png");
 	TextureManager::get().loadFont("ScoreLabel", "assets/fonts/neuropol.ttf", 30);
+	//TextureManager::get().loadTexture("nebula", "assets/space.png");
+
+	//GameObject* background = new GameObject();
+	//background->addComponent<Sprite>(Game::get().getRenderer(), "nebula");
 
 	gb->addComponent<Sprite>(Game::get().getRenderer(), "nebula");
 	playerObj->addComponent<Sprite>(Game::get().getRenderer(), "player");
@@ -35,16 +46,31 @@ void GameScene::init()
 	scoreLabel->getComponent<UILabel>().setFontColor({ 0,128,0 });
 	scoreLabel->getComponent<UILabel>().setText("Score: " + std::to_string(score));
 
-	this->manager = manager;
+	//manager->addGameObject(background);
 	manager->addGameObject(gb);
 	manager->addGameObject(playerObj);
 	manager->addGameObject(enemyObj);
 	manager->addGameObject(scoreLabel);
+	*/
 }
 
+void GameScene::spawnEnemy(int poolID, Vector2<int> rect, Vector2<float> position, Vector2<float> force)
+{
+	GameObject* gb = enemyPool.construct();
+
+	if (!gb->hasComponent<Rigibody2D>()) {
+		gb->addComponent<Rigibody2D>(0, force.x, force.y);
+		gb->addComponent<BoxCollider2D>(Game::get().getRenderer(), rect.x, rect.y);
+		gb->addComponent<Sprite>(Game::get().getRenderer(), "player");
+	}
+
+	gb->getComponent<Transform>().setPosition(position);
+}
 
 void GameScene::update(float deltaTime)
 {
+}
+	/*
 	Collision2D col;
 
 	timer += deltaTime;
@@ -87,5 +113,6 @@ void GameScene::update(float deltaTime)
 	else if (SDLEvent::get().getButtonDown(LEFT) == false && isClicked == true) {
 		isClicked = false;
 	}
+	*/
 
-}
+

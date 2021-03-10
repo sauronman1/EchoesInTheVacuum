@@ -32,6 +32,9 @@ public:
         this->rotation = rotation;
     }
 
+    void setPosition(Vector2<float> v) {
+        position = v;
+    }
     void translate(Vector2<float> v){
         position += v;
     }

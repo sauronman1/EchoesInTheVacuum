@@ -18,6 +18,7 @@ Game::Game(){
     running = false;
     window = nullptr;
     renderer = nullptr;
+    isPaused = false;
 }
 
 Game::~Game(){}
@@ -34,27 +35,31 @@ void Game::init(){
     if (!renderer) {
         CommonFunctions::printErrorMessage(SDL_GetError());
     }
+    TextureManager::get().clean();
+
+    Game::get().pauseGame();
     SceneManager::get().init(manager);
 
-    //Sleep(8000);
-    /*TextureManager::get().clean();
-    SceneManager::get().setCurrentScene(mainScene);*/
 
     clearColor = DARK;
     running = true;
 }
 
 void Game::render(){
-    SDL_SetRenderDrawColor(renderer, clearColor.r, clearColor.g, clearColor.b, clearColor.a);
-    SDL_RenderClear(renderer);
-    manager->draw();
-    SDL_RenderPresent(renderer);
+
+    if (!isPaused) {
+        SDL_SetRenderDrawColor(renderer, clearColor.r, clearColor.g, clearColor.b, clearColor.a);
+        SDL_RenderClear(renderer);
+        manager->draw();
+        SDL_RenderPresent(renderer);
+    }
 }
 
 void Game::update(float deltaTime){
-    manager->update(deltaTime);
-    SceneManager::get().update(deltaTime);
-    
+    if (!isPaused) {
+        manager->update(deltaTime);
+        SceneManager::get().update(deltaTime);
+    }
 
 
 }

@@ -1,5 +1,8 @@
 #pragma once
 #include "../Game Engine/Essentials/SceneManagement/Scene.h"
+#include "../Game Engine/Essentials/ObjectPool.h"
+#include "../Game Engine/Math/Vector2.h"
+
 class GameScene : public Scene
 {
 public:
@@ -9,6 +12,10 @@ public:
 	void init() override;
 	void update(float deltaTime) override;
 private:
+	ObjectPool<GameObject, 100> enemyPool;
+	ObjectPool<GameObject, 100> bulletPool;
+	void spawnEnemy(int poolID, Vector2<int> rect, Vector2<float> position, Vector2<float> force);
+
 	bool isClicked = false;
 	GameObject* playerObj;
 	GameObject* enemyObj;

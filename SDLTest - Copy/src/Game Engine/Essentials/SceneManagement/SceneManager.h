@@ -16,20 +16,18 @@ public:
 		return *sm_instance;
 	}
 	void init(GameObjectManager* manager);
-	void setCurrentScene(Scene* scene);
+	void setCurrentScene();
 	Scene* getCurrentScene() { return currentScene;}
 	void removeScene();
 	void goToNextScene(int sceneID);
 	void update(float deltaTime) { 
-		if (!isPaused) {
 			currentScene->update(deltaTime);
-		}
 	}
 
 private:
 	static SceneManager* sm_instance;
 	Scene* currentScene;
-	bool isPaused = false;
+	Scene* oldScene;
 
 	GameObjectManager* manager;
 

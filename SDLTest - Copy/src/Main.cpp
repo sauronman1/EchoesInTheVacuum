@@ -10,7 +10,7 @@ int main(int argc, char** argv){
     sdlEvent.init();
     game.init();
 
-    const int FPS = 120;
+    const int FPS = 60;
     const int frameDelay = 1000 / FPS;
     Uint32 startingFrame = 0;
     float frameTime;

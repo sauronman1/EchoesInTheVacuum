@@ -38,6 +38,7 @@
   <ItemGroup>
     <ClInclude Include="src\Game Engine\Essentials\Collision\Collision2D.h" />
     <ClInclude Include="src\Game Engine\Essentials\CommonFunctions.h" />
+    <ClInclude Include="src\Game Engine\Essentials\ObjectPool.h" />
     <ClInclude Include="src\Game Engine\Essentials\SceneManagement\Scene.h" />
     <ClInclude Include="src\Game Engine\Essentials\SceneManagement\SceneManager.h" />
     <ClInclude Include="src\Game Engine\Essentials\SoundManager\SoundManager.h" />
@@ -61,6 +62,9 @@
     <ClInclude Include="src\Scripts\Common\NPC.h" />
     <ClInclude Include="src\Scripts\Enemy\Enemy.h" />
     <ClInclude Include="src\Scripts\Player\Ship.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\space.png" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
