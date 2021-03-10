@@ -4,6 +4,10 @@
 
 class Ship : public NPC, Component {
 public:
+	bool init() override final {}
 	void update(float deltaTime) override final {}
+private:
+	float timer = 0;
+	float moveSpeed = 2;
 };
 
