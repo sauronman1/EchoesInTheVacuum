@@ -10,6 +10,11 @@
 #include "../Scripts/Common/BackgroundEffect.h"
 #include "../Game Engine/GameObject/Components/UILabel.h"
 
+
+void loadTextures() {
+
+}
+
 void GameScene::init()
 {
 	Game::get().unPauseGame();
