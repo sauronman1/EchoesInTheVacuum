@@ -2,10 +2,10 @@
 #include "../Common/NPC.h"
 #include "../../Game Engine/GameObject/Components/Component.h"
 
-class Ship : public NPC, Component {
+class Ship : public NPC, public Component {
 public:
-	bool init() override final {}
-	void update(float deltaTime) override final {}
+	bool init() override final;
+	void update(float deltaTime) override final;
 private:
 	float timer = 0;
 	float moveSpeed = 2;

@@ -16,6 +16,7 @@ void Enemy::onTriggerEnter2D(GameObject* other) {
 
 bool Enemy::init() {
 	setHealth(2);
+	return true;
 }
 
 void Enemy::update(float deltaTime) {

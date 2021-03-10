@@ -8,6 +8,7 @@ bool Ship::init(){
 	gameObject->addComponent<Sprite>(Game::get().getRenderer(), "player");
 	gameObject->getComponent<Transform>().rotation = 90;
 	gameObject->addComponent<BoxCollider2D>(Game::get().getRenderer(), 180, 180, "Player");
+	return true;
 }
 
 void Ship::update(float deltaTime) {
