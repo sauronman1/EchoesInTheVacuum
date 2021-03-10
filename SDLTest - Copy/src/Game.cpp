@@ -31,7 +31,7 @@ void Game::init(){
     if (!window) {
         CommonFunctions::printErrorMessage(SDL_GetError());
     }
-    renderer = SDL_CreateRenderer(window, -1, (SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC));
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     if (!renderer) {
         CommonFunctions::printErrorMessage(SDL_GetError());
     }

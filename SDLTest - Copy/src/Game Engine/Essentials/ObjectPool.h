@@ -10,8 +10,7 @@ public:
 
     ObjectPool()
     {
-        size = sizeOfPool;
-        for (auto i = 1; i < size; ++i)
+        for (auto i = 1; i < sizeOfPool; ++i)
             mPool[i - 1].mNext = &mPool[i];
 
         mNextFree = &mPool[0];
@@ -77,7 +76,6 @@ public:
     }
 
 private:
-    std::size_t size;
 
     union Item
     {
@@ -85,6 +83,6 @@ private:
         Item* mNext;
     };
 
-    std::unique_ptr<Item[]> mPool = std::make_unique<Item[]>(size);
+    std::unique_ptr<Item[]> mPool = std::make_unique<Item[]>(sizeOfPool);
     Item* mNextFree = nullptr;
 };
