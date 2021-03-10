@@ -34,7 +34,6 @@ void GameScene::spawnEnemy(Vector2<int> rect, Vector2<float> position, Vector2<f
 std::string GameScene::getRandomTexture()
 {
 	int iRandomEnemyName = rand() % enemyCount + 1;
-	iRandomEnemyName = 26;
 	return "enemy" + CommonFunctions::numToString(iRandomEnemyName);
 }
 
