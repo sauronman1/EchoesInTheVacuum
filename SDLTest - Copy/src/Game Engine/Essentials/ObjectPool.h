@@ -76,7 +76,7 @@ public:
 	}
 
 	auto  returnActiveGameObjectsList() {
-		return gameObjects;
+		return activeGameObjects;
 	}
 
 private:
