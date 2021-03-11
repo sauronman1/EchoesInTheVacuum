@@ -9,7 +9,6 @@
 #include "../Game Engine/Essentials/Collision/Collision2D.h"
 #include "../Scripts/Common/BackgroundEffect.h"
 #include "../Game Engine/GameObject/Components/UILabel.h"
-#include "../Scripts/Enemy/Enemy.h"
 #include "../Scripts/Player/Ship.h"
 
 
@@ -60,8 +59,6 @@ void GameScene::init()
 	GameObject* enemySpawner = new GameObject();
 	enemySpawner->addComponent<EnemySpawner>().initSpawnerWithDelay(manager, bulletPool,true, enemyCount);
 	manager->addGameObject(enemySpawner);
-
-	//spawnEnemy({ 180,180 }, { 1000,500 }, {0,0});
 
 }
 /*

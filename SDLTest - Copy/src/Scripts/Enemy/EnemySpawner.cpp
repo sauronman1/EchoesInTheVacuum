@@ -76,7 +76,6 @@ void EnemySpawner::spawnEnemies(Vector2<float> position, Vector2<float> force)
         position.y = rand() % edgeMaxYPosition + edgeMinYPosition;
         GameObject* gb = enemyPool->getGameObject();
         gb->getComponent<Transform>().setPosition(position);
-        // gb->getgetComponent<Enemy> to change the force in case needed
     }
 
 }
