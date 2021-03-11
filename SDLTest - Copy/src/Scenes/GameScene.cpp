@@ -11,41 +11,20 @@
 #include "../Game Engine/GameObject/Components/UILabel.h"
 #include "../Scripts/Enemy/Enemy.h"
 
-int enemyCount = 26;
-void GameScene::spawnEnemy(Vector2<int> rect, Vector2<float> position, Vector2<float> force)
-{
-	GameObject* gb = enemyPool.construct();
 
-	if (!gb->hasComponent<Rigibody2D>()) {
-		gb->addComponent<Rigibody2D>(0);
-		gb->addComponent<BoxCollider2D>(Game::get().getRenderer(), rect.x, rect.y);
-		gb->addComponent<Enemy>();
-		gb->addComponent<Sprite>(Game::get().getRenderer(), getRandomTexture());
-		gb->getComponent<Transform>().rotation = -90;
-		gb->getComponent<Transform>().scale = 0.35f;
+int enemyCount = 14;
+int spawnSpeed = 2;
 
-
-		manager->addGameObject(gb);
-	}
-
-	gb->getComponent<Transform>().setPosition(position);
-
-}
-std::string GameScene::getRandomTexture()
-{
-	int iRandomEnemyName = rand() % enemyCount + 1;
-	return "enemy" + CommonFunctions::numToString(iRandomEnemyName);
-}
 
 void loadTextures() {
 	for (int i = 1;i <= enemyCount;i++) {
-	TextureManager::get().loadTexture("enemy" + CommonFunctions::numToString(i), "assets/_Art/Enemies/enemy" + CommonFunctions::numToString(i) + ".png");
+		TextureManager::get().loadTexture("enemy" + CommonFunctions::numToString(i), "assets/_Art/Enemies/enemy" + CommonFunctions::numToString(i) + ".png");
 	}
 
 	TextureManager::get().loadTexture("player", "assets/Ship.png");
 	TextureManager::get().loadTexture("bullet", "assets/bullet_blaster_small_single.png");
 
-	}
+}
 
 
 void GameScene::update(float deltaTime)
@@ -58,45 +37,50 @@ void GameScene::init()
 	srand(time(NULL));
 
 	Game::get().unPauseGame();
+
 	loadTextures();
-	spawnEnemy({ 180,180 }, { 1000,500 }, {0,0});
+	GameObject* enemySpawner = new GameObject();
+	enemySpawner->addComponent<EnemySpawner>().initSpawnerWithDelay(manager, true, enemyCount);
+	manager->addGameObject(enemySpawner);
+
+	//spawnEnemy({ 180,180 }, { 1000,500 }, {0,0});
 
 }
-	/*
-	Game::get().unPauseGame();
+/*
+Game::get().unPauseGame();
 
-	GameObject* gb = new GameObject();
-	playerObj = new GameObject();
-	enemyObj = new GameObject();
-	scoreLabel = new GameObject();
-	moveSpeed = 4;
+GameObject* gb = new GameObject();
+playerObj = new GameObject();
+enemyObj = new GameObject();
+scoreLabel = new GameObject();
+moveSpeed = 4;
 
-	TextureManager::get().loadTexture("nebula", "assets/background_02_static.png");
-	TextureManager::get().loadTexture("player", "assets/DKO-api-X1.png");
-	TextureManager::get().loadFont("ScoreLabel", "assets/fonts/neuropol.ttf", 30);
-	TextureManager::get().loadTexture("nebula", "assets/space.png");
+TextureManager::get().loadTexture("nebula", "assets/background_02_static.png");
+TextureManager::get().loadTexture("player", "assets/DKO-api-X1.png");
+TextureManager::get().loadFont("ScoreLabel", "assets/fonts/neuropol.ttf", 30);
+TextureManager::get().loadTexture("nebula", "assets/space.png");
 
-	//GameObject* background = new GameObject();
-	//background->addComponent<Sprite>(Game::get().getRenderer(), "nebula");
+//GameObject* background = new GameObject();
+//background->addComponent<Sprite>(Game::get().getRenderer(), "nebula");
 
-	gb->addComponent<Sprite>(Game::get().getRenderer(), "nebula");
-	playerObj->addComponent<Sprite>(Game::get().getRenderer(), "player");
-	playerObj->getComponent<Transform>().rotation = 90;
-	playerObj->addComponent<BoxCollider2D>(Game::get().getRenderer(), 180, 180);
-	enemyObj->addComponent<Sprite>(Game::get().getRenderer(), "player");
-	enemyObj->getComponent<Transform>().position = Vector2<float>(1700, 500);
-	enemyObj->addComponent<BoxCollider2D>(Game::get().getRenderer(), 180, 180);
-	enemyObj->addComponent<BackgroundEffect>(true, true, 20, 4);
-	scoreLabel->addComponent<UILabel>(Game::get().getRenderer(), "", 880, 60, "ScoreLabel");
-	scoreLabel->getComponent<UILabel>().setFontColor({ 0,128,0 });
-	scoreLabel->getComponent<UILabel>().setText("Score: " + std::to_string(score));
+gb->addComponent<Sprite>(Game::get().getRenderer(), "nebula");
+playerObj->addComponent<Sprite>(Game::get().getRenderer(), "player");
+playerObj->getComponent<Transform>().rotation = 90;
+playerObj->addComponent<BoxCollider2D>(Game::get().getRenderer(), 180, 180);
+enemyObj->addComponent<Sprite>(Game::get().getRenderer(), "player");
+enemyObj->getComponent<Transform>().position = Vector2<float>(1700, 500);
+enemyObj->addComponent<BoxCollider2D>(Game::get().getRenderer(), 180, 180);
+enemyObj->addComponent<BackgroundEffect>(true, true, 20, 4);
+scoreLabel->addComponent<UILabel>(Game::get().getRenderer(), "", 880, 60, "ScoreLabel");
+scoreLabel->getComponent<UILabel>().setFontColor({ 0,128,0 });
+scoreLabel->getComponent<UILabel>().setText("Score: " + std::to_string(score));
 
-	//manager->addGameObject(background);
-	manager->addGameObject(gb);
-	manager->addGameObject(playerObj);
-	manager->addGameObject(enemyObj);
-	manager->addGameObject(scoreLabel);
-	
+//manager->addGameObject(background);
+manager->addGameObject(gb);
+manager->addGameObject(playerObj);
+manager->addGameObject(enemyObj);
+manager->addGameObject(scoreLabel);
+
 }
 
 
