@@ -15,8 +15,8 @@ public:
 		size = poolSize;
 		initPool();
 	}
-	~ObjectPool() {
-		// free memory
+
+	void releaseObjts() {
 		while (activeGameObjects.size())
 		{
 			gameObjects.push_front(activeGameObjects.front());
@@ -28,6 +28,10 @@ public:
 			gameObjects.pop_front();
 			delete obj;
 		}
+	}
+	~ObjectPool() {
+		// free memory
+		releaseObjts();
 	}
 	GameObject* getGameObject()
 	{
