@@ -39,6 +39,7 @@ class BoxCollider2D : public Component{
             return collisionTag;
         }
 
+        SDL_Rect getRect() { return box; }
     private:
         friend class Collision2D;
         SDL_Rect box = {0,0,0,0};

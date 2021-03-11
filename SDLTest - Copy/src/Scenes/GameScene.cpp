@@ -29,16 +29,16 @@ void loadTextures() {
 
 void GameScene::update(float deltaTime)
 {
-	bulletPool->getGameObject();
-	bulletPool->returnActiveGameObjectsList();
+	
 }
 
 void GameScene::createAllBullets()
 {
 	for (auto const& gb : bulletPool->returnAllGameObjectList()) {
 		gb->getComponent<Transform>().setPosition(Vector2<float>(-5000, -5000));
-		gb->addComponent<Projectile>(1,bulletPool);
-		gb->addComponent<BoxCollider2D>(Game::get().getRenderer(), 50, 50);
+		gb->addComponent<Projectile>(bulletPool);
+		gb->addComponent<Rigibody2D>(0, 6, 0);
+		gb->addComponent<BoxCollider2D>(Game::get().getRenderer(), 50, 50, "Bullet");
 		gb->addComponent<Sprite>(Game::get().getRenderer(), "bullet");
 		gb->getComponent<Transform>().rotation = 90;
 
@@ -59,6 +59,8 @@ void GameScene::init()
 	GameObject* enemySpawner = new GameObject();
 	enemySpawner->addComponent<EnemySpawner>().initSpawnerWithDelay(manager, bulletPool,true, enemyCount);
 	manager->addGameObject(enemySpawner);
+	manager->addGameObject(playerObj);
+
 
 }
 /*

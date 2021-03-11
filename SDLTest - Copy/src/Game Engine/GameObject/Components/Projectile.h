@@ -9,21 +9,15 @@ public:
     Projectile() = default;
     ~Projectile() = default;
 
-    Projectile(float speed, ObjectPool* bPool) {
-        flySpeed = speed;
-        projectileObj = gameObject;
-        projectileObj->addComponent<Rigibody2D>(0, flySpeed, 0);
+    Projectile(ObjectPool* bPool) {
         bulletPool = bPool;
     }
 
     void update(float deltaTime) override final {
-        //stop bullet
-    //gameobject setenabled false
-    //bulletpool --> returnGameObject(this)
+        if (gameObject->getComponent<Transform>().position.x > 1920)
+            bulletPool->returnGameObject(gameObject);
     }
     
 private:
-    float flySpeed;
-    GameObject* projectileObj;
     ObjectPool* bulletPool;
 };

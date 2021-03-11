@@ -7,14 +7,14 @@
 class Enemy : public Component, public NPC {
 
 public:
-	Enemy(ObjectPool* bPool);
+	Enemy(ObjectPool* bPool, ObjectPool* ePool);
 	bool init() override final;
 	void update(float deltaTime) override final;
 	void onTriggerEnter2D(GameObject* other);
 
 private:
 	bool collided;
-	Collision2D col;
+	Collision2D* col = new Collision2D();
 	ObjectPool* bulletPool;
-
+	ObjectPool* enemyPool;
 };

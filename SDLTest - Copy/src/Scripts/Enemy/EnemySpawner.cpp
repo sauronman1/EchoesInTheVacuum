@@ -60,7 +60,8 @@ void EnemySpawner::createAllEnemies(ObjectPool* bPool)
     for (auto const& gb : enemyPool->returnAllGameObjectList()) {
             gb->getComponent<Transform>().setPosition(Vector2<float>(-5000,-5000));
             gb->addComponent<BoxCollider2D>(Game::get().getRenderer(), rectDefault.x, rectDefault.y);
-            gb->addComponent<Enemy>(bPool);
+            gb->addComponent<Enemy>(bPool, enemyPool);
+            gb->addComponent<Rigibody2D>(0, -3, 0);
             gb->addComponent<Sprite>(Game::get().getRenderer(), getRandomTexture());
             gb->getComponent<Transform>().rotation = -90;
             gb->getComponent<Transform>().scale = 0.35f;
