@@ -32,6 +32,9 @@ void Ship::update(float deltaTime) {
 	if (SDLEvent::get().getKeyValue(SDLK_s) == 1 && gameObject->getComponent<Transform>().position.y < 850) {
 		gameObject->getComponent<Transform>().translate(Vector2<float>(0, moveSpeed * 100) * deltaTime);
 	}
+	if (SDLEvent::get().getKeyValue(SDLK_k) == 1) {
+		SceneManager::get().goToNextScene(2);
+	}
 	
 
 	if (timer > coolDown && (SDLEvent::get().getButtonDown(LEFT) == true || SDLEvent::get().getKeyValue(SDLK_SPACE) == 1) && isClicked == false) {
