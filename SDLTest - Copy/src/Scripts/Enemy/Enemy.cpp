@@ -1,6 +1,7 @@
 #include "Enemy.h"
 #include "../Player/Ship.h"
 #include "../../Game Engine/Essentials/CommonFunctions.h"
+#include "../../Game Engine/Essentials/SceneManagement/SceneManager.h"
 Enemy::Enemy(ObjectPool* bPool, ObjectPool* ePool, GameObject* player) {
 	bulletPool = bPool;
 	enemyPool = ePool;
@@ -16,7 +17,7 @@ void Enemy::onTriggerEnter2D(GameObject* other) {
 			bulletPool->returnGameObject(other);
 		}
 		if (other->getComponent<BoxCollider2D>().getColisionTag() == "Player" && !collided) {
-			enemyPool->returnGameObject(gameObject);
+			SceneManager::get().goToNextScene(2);
 		
 			collided = true;
 		}
