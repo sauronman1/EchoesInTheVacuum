@@ -1,9 +1,10 @@
 #include "Enemy.h"
 #include "../Player/Ship.h"
 #include "../../Game Engine/Essentials/CommonFunctions.h"
-Enemy::Enemy(ObjectPool* bPool, ObjectPool* ePool) {
+Enemy::Enemy(ObjectPool* bPool, ObjectPool* ePool, GameObject* player) {
 	bulletPool = bPool;
 	enemyPool = ePool;
+	playerTarget = player;
 }
 
 void Enemy::onTriggerEnter2D(GameObject* other) {
@@ -15,7 +16,8 @@ void Enemy::onTriggerEnter2D(GameObject* other) {
 			bulletPool->returnGameObject(other);
 		}
 		if (other->getComponent<BoxCollider2D>().getColisionTag() == "Player" && !collided) {
-			other->getComponent<Ship>().takeDamage(1);
+			enemyPool->returnGameObject(gameObject);
+		
 			collided = true;
 		}
 	}
@@ -35,4 +37,5 @@ void Enemy::update(float deltaTime) {
 	for (auto& const bullet : bulletPool->returnActiveGameObjectsList()) {
 		onTriggerEnter2D(bullet);
 	}
+	onTriggerEnter2D(playerTarget);
 }

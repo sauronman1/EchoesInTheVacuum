@@ -8,13 +8,13 @@ class EnemySpawner : public Component
 {
 private: 
 	ObjectPool *enemyPool = new ObjectPool(100);
-	void createAllEnemies(ObjectPool* bPool);
+	void createAllEnemies(ObjectPool* bPool, GameObject* player);
 	void ScheduleNextEnemySpawn();
 	void update(float deltaTime) override final;
 	std::string getRandomTexture();
 	GameObjectManager* manager;
 public :
-	void initSpawnerWithDelay(GameObjectManager* gManager, ObjectPool* bPool, bool isActive, int enCount);
+	void initSpawnerWithDelay(GameObjectManager* gManager, ObjectPool* bPool, GameObject* player, bool isActive, int enCount);
 	void spawnEnemies(Vector2<float> position, Vector2<float> force);
 	void activate();
 	void deActivate();

@@ -39,12 +39,12 @@ void EnemySpawner::update(float deltaTime)
 }
 
 
-void EnemySpawner::initSpawnerWithDelay(GameObjectManager* gManager, ObjectPool* bPool, bool isActive, int enCount)
+void EnemySpawner::initSpawnerWithDelay(GameObjectManager* gManager, ObjectPool* bPool, GameObject* player, bool isActive, int enCount)
 {
     eCounts = enCount;
     isCreatingEnemies = isActive;
     manager = gManager;
-    createAllEnemies(bPool);
+    createAllEnemies(bPool, player);
 }
 
 
@@ -55,13 +55,13 @@ std::string EnemySpawner::getRandomTexture()
 }
 
 
-void EnemySpawner::createAllEnemies(ObjectPool* bPool)
+void EnemySpawner::createAllEnemies(ObjectPool* bPool, GameObject* player)
 {
     //Add player to the enemy constructor
     for (auto const& gb : enemyPool->returnAllGameObjectList()) {
             gb->getComponent<Transform>().setPosition(Vector2<float>(-5000,-5000));
             gb->addComponent<BoxCollider2D>(Game::get().getRenderer(), rectDefault.x, rectDefault.y);
-            gb->addComponent<Enemy>(bPool, enemyPool);
+            gb->addComponent<Enemy>(bPool, enemyPool, player);
             gb->addComponent<Rigibody2D>(0, -3, 0);
             gb->addComponent<Sprite>(Game::get().getRenderer(), getRandomTexture());
             gb->getComponent<Transform>().rotation = -90;

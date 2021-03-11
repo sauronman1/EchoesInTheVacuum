@@ -57,7 +57,7 @@ void GameScene::init()
 	playerObj = new GameObject();
 	playerObj->addComponent<Ship>(bulletPool);
 	GameObject* enemySpawner = new GameObject();
-	enemySpawner->addComponent<EnemySpawner>().initSpawnerWithDelay(manager, bulletPool,true, enemyCount);
+	enemySpawner->addComponent<EnemySpawner>().initSpawnerWithDelay(manager, bulletPool, playerObj,true, enemyCount);
 	manager->addGameObject(enemySpawner);
 	manager->addGameObject(playerObj);
 
