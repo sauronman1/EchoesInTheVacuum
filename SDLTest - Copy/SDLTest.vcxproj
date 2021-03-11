@@ -33,6 +33,7 @@
     <ClCompile Include="src\Scripts\Common\BackgroundEffect.cpp" />
     <ClCompile Include="src\Scripts\Common\NPC.cpp" />
     <ClCompile Include="src\Scripts\Enemy\Enemy.cpp" />
+    <ClCompile Include="src\Scripts\Enemy\EnemySpawner.cpp" />
     <ClCompile Include="src\Scripts\Player\Ship.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +62,7 @@
     <ClInclude Include="src\Scripts\Common\BackgroundEffect.h" />
     <ClInclude Include="src\Scripts\Common\NPC.h" />
     <ClInclude Include="src\Scripts\Enemy\Enemy.h" />
+    <ClInclude Include="src\Scripts\Enemy\EnemySpawner.h" />
     <ClInclude Include="src\Scripts\Player\Ship.h" />
   </ItemGroup>
   <ItemGroup>

@@ -27,7 +27,7 @@ class GameObject {
             }
         }
 
-        inline bool isActive() const {
+        inline bool isActive() {
             return active;
         }
 

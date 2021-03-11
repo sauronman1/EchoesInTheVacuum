@@ -138,6 +138,9 @@
     <ClCompile Include="src\Scripts\Common\BackgroundEffect.cpp">
       <Filter>Source Files\Scripts\Common</Filter>
     </ClCompile>
+    <ClCompile Include="src\Scripts\Enemy\EnemySpawner.cpp">
+      <Filter>Source Files\Scripts\Enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game Engine\Essentials\CommonFunctions.h">
@@ -217,6 +220,9 @@
     </ClInclude>
     <ClInclude Include="src\Game Engine\Essentials\ObjectPool.h">
       <Filter>Header Files\Game Engine\Essentials</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scripts\Enemy\EnemySpawner.h">
+      <Filter>Header Files\Scripts\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
