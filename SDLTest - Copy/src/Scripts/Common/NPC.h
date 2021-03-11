@@ -1,7 +1,7 @@
 #pragma once
 
 class NPC {
-private:
+protected:
 	float health;
 
 public:

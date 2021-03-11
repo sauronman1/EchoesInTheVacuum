@@ -4,9 +4,10 @@
 #include "../../Game Engine/GameObject/Components/BoxCollider2D.h"
 #include "../../Game Engine/SDL Events/SDLEvent.h"
 #include "../../Game Engine/Essentials/SceneManagement/SceneManager.h"
-
 Ship::Ship(ObjectPool* bPool) {
 	bulletPool = bPool;
+	health = 100;
+
 }
 
 bool Ship::init(){
@@ -32,12 +33,8 @@ void Ship::update(float deltaTime) {
 	if (SDLEvent::get().getKeyValue(SDLK_s) == 1 && gameObject->getComponent<Transform>().position.y < 850) {
 		gameObject->getComponent<Transform>().translate(Vector2<float>(0, moveSpeed * 100) * deltaTime);
 	}
-	if (SDLEvent::get().getKeyValue(SDLK_k) == 1) {
-		Game::get().pauseGame();
-		SceneManager::get().goToNextScene(2);
-		return;
-	}
-	
+
+
 
 	if (timer > coolDown && (SDLEvent::get().getButtonDown(LEFT) == true || SDLEvent::get().getKeyValue(SDLK_SPACE) == 1) && isClicked == false) {
 		isClicked = true;
@@ -49,4 +46,6 @@ void Ship::update(float deltaTime) {
 	else if (SDLEvent::get().getButtonDown(LEFT) == false && isClicked == true) {
 		isClicked = false;
 	}
+
+
 }

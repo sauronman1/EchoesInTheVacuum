@@ -29,7 +29,11 @@ void loadTextures() {
 
 void GameScene::update(float deltaTime)
 {
-	
+	if (playerObj->getComponent<Ship>().getHealth()<=0) {
+		Game::get().pauseGame();
+		SceneManager::get().goToNextScene(2);
+	}
+
 }
 
 void GameScene::createAllBullets()
@@ -60,6 +64,8 @@ void GameScene::init()
 	enemySpawner->addComponent<EnemySpawner>().initSpawnerWithDelay(manager, bulletPool, playerObj,true, enemyCount);
 	manager->addGameObject(enemySpawner);
 	manager->addGameObject(playerObj);
+
+
 //	Game::get().pauseGame();
 //	SceneManager::get().goToNextScene(2);
 

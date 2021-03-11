@@ -17,8 +17,7 @@ void Enemy::onTriggerEnter2D(GameObject* other) {
 			bulletPool->returnGameObject(other);
 		}
 		if (other->getComponent<BoxCollider2D>().getColisionTag() == "Player" && !collided) {
-			SceneManager::get().goToNextScene(2);
-		
+			other->getComponent<Ship>().setHealth(-1);		
 			collided = true;
 		}
 	}
