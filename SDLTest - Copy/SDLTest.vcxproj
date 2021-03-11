@@ -28,6 +28,7 @@
     <ClCompile Include="src\Game Engine\SDL Events\SDLEvent.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Scenes\CreditsScene.cpp" />
     <ClCompile Include="src\Scenes\GameScene.cpp" />
     <ClCompile Include="src\Scenes\MainScene.cpp" />
     <ClCompile Include="src\Scripts\Common\BackgroundEffect.cpp" />
@@ -57,6 +58,7 @@
     <ClInclude Include="src\Game Engine\Math\Vector2.h" />
     <ClInclude Include="src\Game Engine\SDL Events\SDLEvent.h" />
     <ClInclude Include="src\Game.h" />
+    <ClInclude Include="src\Scenes\CreditsScene.h" />
     <ClInclude Include="src\Scenes\GameScene.h" />
     <ClInclude Include="src\Scenes\MainScene.h" />
     <ClInclude Include="src\Scripts\Common\BackgroundEffect.h" />

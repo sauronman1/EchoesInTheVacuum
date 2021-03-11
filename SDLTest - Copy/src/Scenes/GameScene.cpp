@@ -10,6 +10,7 @@
 #include "../Scripts/Common/BackgroundEffect.h"
 #include "../Game Engine/GameObject/Components/UILabel.h"
 #include "../Scripts/Enemy/Enemy.h"
+#include "../Scripts/Player/Ship.h"
 
 
 int enemyCount = 14;
@@ -29,21 +30,20 @@ void loadTextures() {
 
 void GameScene::update(float deltaTime)
 {
-
+	bulletPool->getGameObject();
+	bulletPool->returnActiveGameObjectsList();
 }
 
 void GameScene::createAllBullets()
 {
 	for (auto const& gb : bulletPool->returnAllGameObjectList()) {
-		//gb->getComponent<Transform>().setPosition({ -5000,-5000 });
-		//gb->addComponent<Rigibody2D>(0);
-		//gb->addComponent<BoxCollider2D>(Game::get().getRenderer(), rectDefault.x, rectDefault.y);
-		//gb->addComponent<Enemy>();
-		//gb->addComponent<Sprite>(Game::get().getRenderer(), getRandomTexture());
-		//gb->getComponent<Transform>().rotation = -90;
-		//gb->getComponent<Transform>().scale = 0.35f;
+		gb->getComponent<Transform>().setPosition(Vector2<float>(-5000, -5000));
+		gb->addComponent<Projectile>(1,bulletPool);
+		gb->addComponent<BoxCollider2D>(Game::get().getRenderer(), 50, 50);
+		gb->addComponent<Sprite>(Game::get().getRenderer(), "bullet");
+		gb->getComponent<Transform>().rotation = 90;
 
-	//	manager->addGameObject(gb);
+		manager->addGameObject(gb);
 	}
 }
 
@@ -55,9 +55,10 @@ void GameScene::init()
 
 	loadTextures();
 	createAllBullets();
-
+	playerObj = new GameObject();
+	playerObj->addComponent<Ship>(bulletPool);
 	GameObject* enemySpawner = new GameObject();
-	enemySpawner->addComponent<EnemySpawner>().initSpawnerWithDelay(manager, true, enemyCount);
+	enemySpawner->addComponent<EnemySpawner>().initSpawnerWithDelay(manager, bulletPool,true, enemyCount);
 	manager->addGameObject(enemySpawner);
 
 	//spawnEnemy({ 180,180 }, { 1000,500 }, {0,0});

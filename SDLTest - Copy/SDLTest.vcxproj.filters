@@ -141,6 +141,9 @@
     <ClCompile Include="src\Scripts\Enemy\EnemySpawner.cpp">
       <Filter>Source Files\Scripts\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="src\Scenes\CreditsScene.cpp">
+      <Filter>Source Files\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game Engine\Essentials\CommonFunctions.h">
@@ -223,6 +226,9 @@
     </ClInclude>
     <ClInclude Include="src\Scripts\Enemy\EnemySpawner.h">
       <Filter>Header Files\Scripts\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scenes\CreditsScene.h">
+      <Filter>Header Files\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

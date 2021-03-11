@@ -1,6 +1,7 @@
 #include "SceneManager.h"
 #include "../../../Scenes/MainScene.h"
 #include "../../../Scenes/GameScene.h"
+#include "../../../Scenes/CreditsScene.h"
 #include "../TextureManager.h"
 SceneManager* SceneManager::sm_instance = nullptr;
 
@@ -36,6 +37,12 @@ void SceneManager::goToNextScene(int sceneID)
 	{
 		GameScene* gameScene = new GameScene(manager);
 		currentScene = gameScene;
+		setCurrentScene();
+	}
+	else if (sceneID == 2)
+	{
+		CreditsScene* creditsScene = new CreditsScene(manager);
+		currentScene = creditsScene;
 		setCurrentScene();
 	}
 }

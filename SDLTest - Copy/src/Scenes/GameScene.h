@@ -14,15 +14,13 @@ public:
 private:
 
 	ObjectPool* bulletPool = new ObjectPool(100);
-
+	
 	void createAllBullets();
 	bool isClicked = false;
 	GameObject* playerObj;
 	GameObject* enemyObj;
 	GameObject* scoreLabel;
 	float moveSpeed;
-	float timer = 0;
-	float coolDown = 1;
 	int score = 0;
 };
 
