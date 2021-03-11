@@ -1,88 +1,84 @@
-#include <type_traits>
 #include <iostream>
 #include <memory>
-#include <chrono>
-
-template<class T, int sizeOfPool>
-class ObjectPool final
+#include <list>
+#include "../GameObject/GameObject.h"
+class ObjectPool
 {
 public:
 
-    ObjectPool()
-    {
-        for (auto i = 1; i < sizeOfPool; ++i)
-            mPool[i - 1].mNext = &mPool[i];
+	ObjectPool() {
+		initPool();
+	};
+	ObjectPool(int poolSize) {
+		size = poolSize;
+		initPool();
+	}
+	~ObjectPool() {
+		// free memory
+		while (activeGameObjects.size())
+		{
+			gameObjects.push_front(activeGameObjects.front());
+			activeGameObjects.pop_front();
+		}
+		while (gameObjects.size())
+		{
+			GameObject* obj = gameObjects.front();
+			gameObjects.pop_front();
+			delete obj;
+		}
+	}
+	GameObject* getGameObject()
+	{
+		if (gameObjects.empty())
+		{
+			returnGameObject(activeGameObjects.back());
+			activeGameObjects.pop_back();
+			return new GameObject;
+		}
 
-        mNextFree = &mPool[0];
-    }
+			GameObject* gameObject = gameObjects.front();
+			gameObjects.pop_front();
+			gameObject->SetEnabled(true);
+			activeGameObjects.push_front(gameObject);
+			return gameObject;
+		
+	}
+	
 
-    ObjectPool(const ObjectPool&) = delete;
 
-    ObjectPool(ObjectPool&& other) noexcept
-        : mPool{ std::move(other.mPool) }
-        , mNextFree{ other.mNextFree }
-    {
-        other.mNextFree = nullptr;
-    }
+	void  initPool() {
+		for (int i = 0;i < size;i++) {
+			GameObject *newGameObject = new GameObject();
+			newGameObject->SetEnabled(false);
+			gameObjects.push_front(newGameObject);
+		}
 
-    ~ObjectPool() = default;
+	}
 
-    [[nodiscard]] T* allocate()
-    {
-        if (mNextFree == nullptr)
-            throw std::bad_alloc{};
+	void returnGameObject(GameObject* gameObject)
+	{
+		gameObject->SetEnabled(false);
+		gameObjects.push_back(gameObject);
+	}
 
-        const auto item = mNextFree;
-        mNextFree = item->mNext;
+	int getAllGameObjectsCount() {
+		return gameObjects.size();
+	}
 
-        return reinterpret_cast<T*>(&item->mStorage);
-    }
+	int getActiveGameObjectsCount() {
+		return activeGameObjects.size();
+	}
 
-    void deallocate(T* p) noexcept
-    {
-        const auto item = reinterpret_cast<Item*>(p);
+	auto  returnAllGameObjectList() {
+		return gameObjects;
+	}
 
-        item->mNext = mNextFree;
-        mNextFree = item;
-    }
-
-    template<class ...Args>
-    [[nodiscard]] T* construct(Args&& ...args)
-    {
-        return new (allocate()) T(std::forward<Args>(args)...);
-    }
-
-    void destroy(T* p) noexcept
-    {
-        if (p == nullptr)
-            return;
-
-        p->~value_type();
-        deallocate(p);
-    }
-
-    ObjectPool& operator =(const ObjectPool&) = delete;
-
-    ObjectPool& operator =(ObjectPool&& other) noexcept
-    {
-        if (this == &other)
-            return *this;
-
-        mPool = std::move(other.mPool);
-        mNextFree = other.mNextFree;
-        other.mNextFree = nullptr;
-
-        return *this;
-    }
+	auto  returnActiveGameObjectsList() {
+		return gameObjects;
+	}
 
 private:
-
-    union Item
-    {
-        std::aligned_storage_t<sizeof(T), alignof(T)> mStorage;
-        Item* mNext;
-    };
-
-    std::unique_ptr<Item[]> mPool = std::make_unique<Item[]>(sizeOfPool);
-    Item* mNextFree = nullptr;
+	int size = 10;
+	std::list<GameObject*> gameObjects;
+	std::list<GameObject*> activeGameObjects;
 };

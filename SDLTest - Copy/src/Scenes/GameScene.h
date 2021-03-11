@@ -12,10 +12,10 @@ public:
 	void init() override;
 	void update(float deltaTime) override;
 private:
-	ObjectPool<GameObject, 20> bulletPool;
-	std::vector<GameObject> activeBullets;
 
+	ObjectPool* bulletPool = new ObjectPool(100);
 
+	void createAllBullets();
 	bool isClicked = false;
 	GameObject* playerObj;
 	GameObject* enemyObj;

@@ -1,4 +1,6 @@
 #include "EnemySpawner.h"
+#include <list>
+#include <iostream>
 #include "../../Game Engine/Essentials/CommonFunctions.h"
 #include "../../Game Engine/GameObject/Components/BoxCollider2D.h"
 #include "../../Game Engine/GameObject/Components/Rigibody2D.h"
@@ -9,10 +11,12 @@
 bool isCreatingEnemies = false;
 int eCounts = 0;
 float spawnDelay = 999;
- int edgeMinYPosition = 0;
- int edgeMaxYPosition = 850;
- float counter = 0;
-
+int edgeMinYPosition = 0;
+int edgeMaxYPosition = 850;
+float counter = 0;
+Vector2<int> rectDefault = {180,180};
+Vector2<float> offScreen = { 1700,0 };
+Vector2<float> zeroForce = {0,0};
 
  int maxSpawnRateInSeconds = 5;
  int minSpawnRateInSeconds = 1;
@@ -28,7 +32,7 @@ void EnemySpawner::update(float deltaTime)
 
     if (counter > spawnDelay) {
         counter = 0;
-        spawnEnemies({ 180,180 }, { 1700,0 }, {0,0});
+        spawnEnemies(offScreen, zeroForce);
         counter = 0;
     }
 
@@ -40,6 +44,7 @@ void EnemySpawner::initSpawnerWithDelay(GameObjectManager* gManager, bool isActi
     eCounts = enCount;
     isCreatingEnemies = isActive;
     manager = gManager;
+    createAllEnemies();
 }
 
 
@@ -49,26 +54,29 @@ std::string EnemySpawner::getRandomTexture()
     return "enemy" + CommonFunctions::numToString(iRandomEnemyName);
 }
 
-void EnemySpawner::spawnEnemies(Vector2<int> rect, Vector2<float> position, Vector2<float> force)
+void EnemySpawner::createAllEnemies()
 {
-    if (isCreatingEnemies) {
-        position.y = rand() % edgeMaxYPosition + edgeMinYPosition;
-
-       GameObject* gb = enemyPool.allocate();
-
-        if (!gb->hasComponent<Rigibody2D>()) {
+    for (auto const& gb : enemyPool->returnAllGameObjectList()) {
+            gb->getComponent<Transform>().setPosition({ -5000,-5000 });
             gb->addComponent<Rigibody2D>(0);
-            gb->addComponent<BoxCollider2D>(Game::get().getRenderer(), rect.x, rect.y);
+            gb->addComponent<BoxCollider2D>(Game::get().getRenderer(), rectDefault.x, rectDefault.y);
             gb->addComponent<Enemy>();
             gb->addComponent<Sprite>(Game::get().getRenderer(), getRandomTexture());
             gb->getComponent<Transform>().rotation = -90;
             gb->getComponent<Transform>().scale = 0.35f;
 
             manager->addGameObject(gb);
-        }
-        CommonFunctions::printConsoleMessage("Creating a enemy");
+    }
+ 
+}
+
+void EnemySpawner::spawnEnemies(Vector2<float> position, Vector2<float> force)
+{
+    if (isCreatingEnemies) {
+        position.y = rand() % edgeMaxYPosition + edgeMinYPosition;
+        GameObject* gb = enemyPool->getGameObject();
         gb->getComponent<Transform>().setPosition(position);
-        
+        // gb->getgetComponent<Enemy> to change the force in case needed
     }
 
 }
