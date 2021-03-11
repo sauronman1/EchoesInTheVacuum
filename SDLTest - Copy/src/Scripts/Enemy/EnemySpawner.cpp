@@ -54,6 +54,7 @@ std::string EnemySpawner::getRandomTexture()
     return "enemy" + CommonFunctions::numToString(iRandomEnemyName);
 }
 
+
 void EnemySpawner::createAllEnemies(ObjectPool* bPool)
 {
     //Add player to the enemy constructor

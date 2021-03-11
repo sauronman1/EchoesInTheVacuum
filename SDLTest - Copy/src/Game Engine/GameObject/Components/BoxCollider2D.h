@@ -4,6 +4,7 @@
 #include <string>
 #include "../GameObject.h"
 #include "Component.h"
+#include "../../../Game Engine/Essentials/CommonFunctions.h"
 
 class BoxCollider2D : public Component{
 

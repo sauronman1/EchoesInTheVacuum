@@ -1,12 +1,15 @@
 #include "Enemy.h"
 #include "../Player/Ship.h"
-
+#include "../../Game Engine/Essentials/CommonFunctions.h"
 Enemy::Enemy(ObjectPool* bPool, ObjectPool* ePool) {
 	bulletPool = bPool;
 	enemyPool = ePool;
 }
 
 void Enemy::onTriggerEnter2D(GameObject* other) {
+	int x = other->getComponent<BoxCollider2D>().getRect().x;
+
+	CommonFunctions::printConsoleMessage(CommonFunctions::numToString(x));
 	if (col.AABB(other->getComponent<BoxCollider2D>().getRect(), gameObject->getComponent<BoxCollider2D>().getRect()) && other->isActive()) {
 		if (other->getComponent<BoxCollider2D>().getColisionTag() == "Bullet") {
 			takeDamage(1);
