@@ -33,7 +33,9 @@ void Ship::update(float deltaTime) {
 		gameObject->getComponent<Transform>().translate(Vector2<float>(0, moveSpeed * 100) * deltaTime);
 	}
 	if (SDLEvent::get().getKeyValue(SDLK_k) == 1) {
+		Game::get().pauseGame();
 		SceneManager::get().goToNextScene(2);
+		return;
 	}
 	
 

@@ -4,8 +4,11 @@
 #include "../Game Engine/GameObject/Components/Sprite.h"
 #include "../Game Engine/Essentials/SceneManagement/SceneManager.h"
 #include "../Game Engine/SDL Events/SDLEvent.h"
-
+#include "../Game Engine/Essentials/CommonFunctions.h"
 void CreditsScene::init() {
+	CommonFunctions::printConsoleMessage("Final Scene Loaded");
+	Game::get().unPauseGame();
+
 	GameObject* gb = new GameObject();
 
 	TextureManager::get().loadTexture("background", "assets/background_02_static.png");

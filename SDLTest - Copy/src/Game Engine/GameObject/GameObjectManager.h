@@ -12,9 +12,9 @@ class GameObjectManager {
 
         void draw();
         void update(float deltaTime);
-        void addGameObject(GameObject* player);
-        void eraseGameObject(GameObject* player);
-        GameObject* cloneGameObject(GameObject* player);
+        void addGameObject(GameObject* gameObj);
+        void eraseGameObject(GameObject* gameObj);
+        GameObject* cloneGameObject(GameObject* gameObj);
         inline void cleanGameObject() { gameObjects.clear(); };
 
 private:

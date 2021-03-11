@@ -7,7 +7,10 @@ public:
 	CreditsScene(GameObjectManager* manager) {
 		this->manager = manager;
 	};
-	void init() override;
+	void init() {
+		manager->cleanGameObject();
+
+	};
 	void update(float deltaTime) override;
 private:
 

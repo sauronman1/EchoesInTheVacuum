@@ -3,7 +3,7 @@
 #include "../../Game Engine/GameObject/Components/Component.h"
 #include "../../Game Engine/Essentials/ObjectPool.h"
 
-class Ship : public NPC, public Component {
+class Ship :public Component  , public NPC {
 public:
 	Ship(ObjectPool* bPool);
 	bool init() override final;
