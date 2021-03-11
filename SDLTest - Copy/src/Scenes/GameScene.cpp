@@ -60,7 +60,8 @@ void GameScene::init()
 	enemySpawner->addComponent<EnemySpawner>().initSpawnerWithDelay(manager, bulletPool, playerObj,true, enemyCount);
 	manager->addGameObject(enemySpawner);
 	manager->addGameObject(playerObj);
-
+//	Game::get().pauseGame();
+//	SceneManager::get().goToNextScene(2);
 
 }
 /*
