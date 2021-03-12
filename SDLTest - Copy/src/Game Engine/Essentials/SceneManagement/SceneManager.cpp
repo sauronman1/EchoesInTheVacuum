@@ -19,6 +19,8 @@ void SceneManager::setCurrentScene()
 
 void SceneManager::removeScene()
 {
+	if (currentScene == nullptr) return;
+	currentScene->sceneFinished = true;
 	TextureManager::get().clean();
 	manager->cleanGameObject();
 	delete currentScene;

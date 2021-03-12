@@ -39,4 +39,6 @@ void CreditsScene::init() {
 
 void CreditsScene::update(float deltaTime)
 {
+	if (sceneFinished == true) { return; }
+
 }

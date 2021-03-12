@@ -87,6 +87,7 @@ void MainScene::update(float deltaTime)
 			sceneFinished = false;
 			Game::get().pauseGame();
 			SceneManager::get().goToNextScene(1);
+			return;
 
 		}
 		if (SDLEvent::get().getMousePos().x > 750 && SDLEvent::get().getMousePos().x < 1180 && SDLEvent::get().getMousePos().y > 550 && SDLEvent::get().getMousePos().y < 680) {

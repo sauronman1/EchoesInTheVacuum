@@ -31,9 +31,12 @@ void loadTextures() {
 
 void GameScene::update(float deltaTime)
 {
+	if (sceneFinished == true) { return; }
+
 	if (playerObj->getComponent<Ship>().getHealth()<=0) {
 		Game::get().pauseGame();
 		SceneManager::get().goToNextScene(2);
+		return;
 	}
 
 	if (currentScore != GameScore::get().getGameScore()) {
