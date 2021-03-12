@@ -10,6 +10,9 @@ public:
 	void init();
 	void update(float deltaTime) override;
 private:
-
+	GameObject* titleLable;
+	GameObject* highscoreLable;
+	GameObject* RetryObj;
+	GameObject* quitObj;
 };
 
