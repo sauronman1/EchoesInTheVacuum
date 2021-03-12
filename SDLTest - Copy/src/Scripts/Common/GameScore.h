@@ -5,19 +5,34 @@
 class GameScore
 {
 private:
-	static int score;
+	 int score;
+	static GameScore* s_instance;
+
 public:
-	static void incrementGameScore(int addToScore) {
+
+	GameScore();
+	~GameScore() = default;
+
+	inline static GameScore& get() {
+		if (s_instance == nullptr) {
+			s_instance = new GameScore();
+		}
+		return *s_instance;
+	}
+
+
+
+	 void incrementGameScore(int addToScore) {
 		score += addToScore;
 	}
-	static void initScore() {
+	 void initScore() {
 		score = 0;
 	}
-	static int getGameScore() {
+	 int getGameScore() {
 		return score;
 	}
 
-	static int getHighScore()
+	 int getHighScore()
 	{
 		int x = 0; // return 0 if no score there.
 
@@ -33,7 +48,7 @@ public:
 
 		return x;
 	}
-	static void setHighScore(int score) {
+	 void setHighScore(int score) {
 		if (score > getHighScore()) {
 			CommonFunctions::writeToFile(CommonFunctions::numToString(score), "test.xml");
 		}
