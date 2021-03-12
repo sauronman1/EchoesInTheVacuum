@@ -14,6 +14,8 @@ public:
 	static void printConsoleMessage(std::string messageToPrint);
 	static void printErrorMessage(std::string messageToPrint);
 
-
+	static std::string readFromFile(std::string filePath);
+	static std::string readFirstLineOnly(std::string filePath);
+	static void writeToFile(std::string textToWrite, std::string filePath);
 };
 

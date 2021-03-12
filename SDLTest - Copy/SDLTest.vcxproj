@@ -62,6 +62,7 @@
     <ClInclude Include="src\Scenes\GameScene.h" />
     <ClInclude Include="src\Scenes\MainScene.h" />
     <ClInclude Include="src\Scripts\Common\BackgroundEffect.h" />
+    <ClInclude Include="src\Scripts\Common\GameScore.h" />
     <ClInclude Include="src\Scripts\Common\NPC.h" />
     <ClInclude Include="src\Scripts\Enemy\Enemy.h" />
     <ClInclude Include="src\Scripts\Enemy\EnemySpawner.h" />
@@ -69,6 +70,12 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\space.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Text.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="test.xml" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
