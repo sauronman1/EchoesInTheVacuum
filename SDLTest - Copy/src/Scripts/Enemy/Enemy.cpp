@@ -2,6 +2,9 @@
 #include "../Player/Ship.h"
 #include "../../Game Engine/Essentials/CommonFunctions.h"
 #include "../../Game Engine/Essentials/SceneManagement/SceneManager.h"
+#include "../../Game Engine/GameObject/Components/UILabel.h"
+#include "../../Scripts/Common/GameScore.h"
+
 Enemy::Enemy(ObjectPool* bPool, ObjectPool* ePool, GameObject* player) {
 	bulletPool = bPool;
 	enemyPool = ePool;
@@ -12,9 +15,9 @@ void Enemy::onTriggerEnter2D(GameObject* other) {
 
 	if (col.AABB(other->getComponent<BoxCollider2D>().getRect(), gameObject->getComponent<BoxCollider2D>().getRect()) && other->isActive()) {
 		if (other->getComponent<BoxCollider2D>().getColisionTag() == "Bullet") {
-			takeDamage(1);
-			std::cout << "eyyy" << std::endl;
 			bulletPool->returnGameObject(other);
+			GameScore::incrementGameScore(1);
+			enemyPool->returnGameObject(gameObject);
 		}
 		if (other->getComponent<BoxCollider2D>().getColisionTag() == "Player" && !collided) {
 			other->getComponent<Ship>().setHealth(-1);		

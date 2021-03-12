@@ -10,6 +10,7 @@
 #include "../Scripts/Common/BackgroundEffect.h"
 #include "../Game Engine/GameObject/Components/UILabel.h"
 #include "../Scripts/Player/Ship.h"
+#include "../Scripts/Common/GameScore.h"
 
 
 int enemyCount = 14;
@@ -23,6 +24,7 @@ void loadTextures() {
 
 	TextureManager::get().loadTexture("player", "assets/Ship.png");
 	TextureManager::get().loadTexture("bullet", "assets/bullet_blaster_small_single.png");
+	TextureManager::get().loadFont("score", "assets/fonts/neuropol.ttf", 30);
 
 }
 
@@ -34,6 +36,11 @@ void GameScene::update(float deltaTime)
 		SceneManager::get().goToNextScene(2);
 	}
 
+	if (currentScore != GameScore::getGameScore()) {
+		currentScore = GameScore::getGameScore();
+		scoreLabel->getComponent<UILabel>().setText("score: " + std::to_string(GameScore::getGameScore()));
+
+	}
 }
 
 void GameScene::createAllBullets()
@@ -58,10 +65,17 @@ void GameScene::init()
 
 	loadTextures();
 	createAllBullets();
+	GameScore::initScore();
 	playerObj = new GameObject();
+	scoreLabel = new GameObject();
 	playerObj->addComponent<Ship>(bulletPool);
+	scoreLabel->addComponent<UILabel>(Game::get().getRenderer(), "", 880, 440, "score");
+	scoreLabel->getComponent<UILabel>().setFontColor({ 0,128,0 });
+	scoreLabel->getComponent<UILabel>().setText("score: " + std::to_string(GameScore::getGameScore()));
 	GameObject* enemySpawner = new GameObject();
-	enemySpawner->addComponent<EnemySpawner>().initSpawnerWithDelay(manager, bulletPool, playerObj,true, enemyCount);
+	enemySpawner->addComponent<EnemySpawner>().initSpawnerWithDelay(manager, bulletPool, playerObj, true, enemyCount);
+	
+	manager->addGameObject(scoreLabel);
 	manager->addGameObject(enemySpawner);
 	manager->addGameObject(playerObj);
 
