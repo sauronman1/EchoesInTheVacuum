@@ -14,8 +14,9 @@ public:
 
 private:
 	bool collided;
-	Collision2D col ;
+	Collision2D col;
 	ObjectPool* bulletPool;
 	ObjectPool* enemyPool;
 	GameObject* playerTarget;
+
 };

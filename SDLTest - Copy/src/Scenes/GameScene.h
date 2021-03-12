@@ -21,6 +21,6 @@ private:
 	GameObject* enemyObj;
 	GameObject* scoreLabel;
 	float moveSpeed;
-	int score = 0;
+	int currentScore = 0;
 };
 

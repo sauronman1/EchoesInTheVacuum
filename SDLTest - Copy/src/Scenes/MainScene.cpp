@@ -72,9 +72,6 @@ void MainScene::init()
 	manager->addGameObject(toggleLable);
 	manager->addGameObject(toggleIndicator);
 	manager->addGameObject(playSymbol);
-
-
-
 }
 
 
