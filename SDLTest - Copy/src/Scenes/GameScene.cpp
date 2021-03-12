@@ -36,9 +36,9 @@ void GameScene::update(float deltaTime)
 		SceneManager::get().goToNextScene(2);
 	}
 
-	if (currentScore != GameScore::getGameScore()) {
-		currentScore = GameScore::getGameScore();
-		scoreLabel->getComponent<UILabel>().setText("score: " + std::to_string(GameScore::getGameScore()));
+	if (currentScore != GameScore::get().getGameScore()) {
+		currentScore = GameScore::get().getGameScore();
+		scoreLabel->getComponent<UILabel>().setText("score: " + std::to_string(GameScore::get().getGameScore()));
 
 	}
 }
@@ -65,13 +65,13 @@ void GameScene::init()
 
 	loadTextures();
 	createAllBullets();
-	GameScore::initScore();
+	GameScore::get().initScore();
 	playerObj = new GameObject();
 	scoreLabel = new GameObject();
 	playerObj->addComponent<Ship>(bulletPool);
 	scoreLabel->addComponent<UILabel>(Game::get().getRenderer(), "", 880, 440, "score");
 	scoreLabel->getComponent<UILabel>().setFontColor({ 0,128,0 });
-	scoreLabel->getComponent<UILabel>().setText("score: " + std::to_string(GameScore::getGameScore()));
+	scoreLabel->getComponent<UILabel>().setText("score: " + std::to_string(GameScore::get().getGameScore()));
 	GameObject* enemySpawner = new GameObject();
 	enemySpawner->addComponent<EnemySpawner>().initSpawnerWithDelay(manager, bulletPool, playerObj, true, enemyCount);
 	
