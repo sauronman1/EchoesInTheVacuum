@@ -1,11 +1,13 @@
 #include "EnemySpawner.h"
 #include <list>
 #include <iostream>
+#include <sstream>
 #include "../../Game Engine/Essentials/CommonFunctions.h"
 #include "../../Game Engine/GameObject/Components/BoxCollider2D.h"
 #include "../../Game Engine/GameObject/Components/Rigibody2D.h"
 #include "../../Game Engine/GameObject/Components/Sprite.h"
 #include "../../Game Engine/GameObject/Components/Transform.h"
+#include "../../Scripts/Common/BackgroundEffect.h"
 #include "Enemy.h"
 
 bool isCreatingEnemies = false;
@@ -63,7 +65,15 @@ void EnemySpawner::createAllEnemies(ObjectPool* bPool, GameObject* player)
             gb->addComponent<BoxCollider2D>(Game::get().getRenderer(), rectDefault.x, rectDefault.y);
             gb->addComponent<Enemy>(bPool, enemyPool, player);
             gb->addComponent<Rigibody2D>(0, -3, 0);
-            gb->addComponent<Sprite>(Game::get().getRenderer(), getRandomTexture());
+            std::string sprite = getRandomTexture();
+            int theNumber;
+            int pos = sprite.find("y") + 1;
+            std::string numberIs = sprite.substr(pos, pos + 1);
+            std::stringstream geek(numberIs);
+            geek >> theNumber;
+            if (theNumber == 3 || theNumber == 4 || theNumber == 5 || theNumber == 7)
+                gb->addComponent<BackgroundEffect>(true, false, 6, 0);
+            gb->addComponent<Sprite>(Game::get().getRenderer(), sprite);
             gb->getComponent<Transform>().rotation = -90;
             gb->getComponent<Transform>().scale = 0.35f;
 
