@@ -49,7 +49,7 @@ public:
 
 		return x;
 	}
-	 void setHighScore(int score) {
+	 void setHighScore() {
 		if (score > getHighScore()) {
 			CommonFunctions::writeToFile(CommonFunctions::numToString(score), "test.xml");
 		}

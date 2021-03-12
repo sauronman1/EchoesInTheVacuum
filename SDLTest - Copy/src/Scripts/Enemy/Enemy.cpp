@@ -20,6 +20,7 @@ void Enemy::onTriggerEnter2D(GameObject* other) {
 			enemyPool->returnGameObject(gameObject);
 		}
 		if (other->getComponent<BoxCollider2D>().getColisionTag() == "Player" && !collided) {
+			GameScore::get().setHighScore();
 			other->getComponent<Ship>().setHealth(-1);		
 			collided = true;
 		}
