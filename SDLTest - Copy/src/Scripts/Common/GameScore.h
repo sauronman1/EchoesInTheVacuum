@@ -6,14 +6,15 @@ class GameScore
 {
 private:
 	 int score;
-	static GameScore* s_instance;
+		static  GameScore* s_instance;
 
 public:
 
-	GameScore();
+	GameScore() = default;
 	~GameScore() = default;
 
 	inline static GameScore& get() {
+		
 		if (s_instance == nullptr) {
 			s_instance = new GameScore();
 		}
