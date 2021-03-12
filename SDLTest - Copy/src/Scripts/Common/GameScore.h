@@ -4,7 +4,19 @@
 
 class GameScore
 {
+private:
+	static int score;
 public:
+	static void incrementGameScore(int addToScore) {
+		score += addToScore;
+	}
+	static void initScore() {
+		score = 0;
+	}
+	static int getGameScore() {
+		return score;
+	}
+
 	static int getHighScore()
 	{
 		int x = 0; // return 0 if no score there.
