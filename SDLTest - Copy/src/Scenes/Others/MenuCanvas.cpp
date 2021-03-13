@@ -16,7 +16,7 @@ void MenuCanvas::update(float deltaTime)
 		isClicked = true;
 		if (SDLEvent::get().getMousePos().x > 750 && SDLEvent::get().getMousePos().x < 1200 && SDLEvent::get().getMousePos().y > 350 && SDLEvent::get().getMousePos().y < 470) {
 			std::cout << "Go to New Scene" << std::endl;
-			SceneManager::get().setSceneState(false);
+			SceneManager::get().setSceneState(true);
 			Game::get().pauseGame();
 			SceneManager::get().goToNextScene(1);
 			return;

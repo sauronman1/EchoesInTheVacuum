@@ -35,6 +35,8 @@ void Game::init(){
     if (!renderer) {
         CommonFunctions::printErrorMessage(SDL_GetError());
     }
+    srand(time(NULL));
+
     TextureManager::get().clean();
 
     Game::get().pauseGame();

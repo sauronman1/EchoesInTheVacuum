@@ -11,6 +11,8 @@ public:
 	MainScene(GameObjectManager* managerT) {
 		manager = managerT;
 	};
+
+	~MainScene() = default;
 	void init() override;
 
 private:

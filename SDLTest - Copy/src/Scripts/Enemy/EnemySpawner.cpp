@@ -1,12 +1,7 @@
 #include "EnemySpawner.h"
-#include <list>
-#include <iostream>
 #include <sstream>
-#include "../../Game Engine/Essentials/CommonFunctions.h"
-#include "../../Game Engine/GameObject/Components/BoxCollider2D.h"
 #include "../../Game Engine/GameObject/Components/Rigibody2D.h"
 #include "../../Game Engine/GameObject/Components/Sprite.h"
-#include "../../Game Engine/GameObject/Components/Transform.h"
 #include "../../Scripts/Common/BackgroundEffect.h"
 #include "Enemy.h"
 

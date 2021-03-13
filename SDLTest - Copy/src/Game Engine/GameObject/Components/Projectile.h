@@ -1,6 +1,8 @@
 #pragma once
 #include "Component.h"
 #include "../GameObject.h"
+#include "../../Essentials/ObjectPool.h"
+
 #include "Rigibody2D.h"
 
 class Projectile : public Component {
