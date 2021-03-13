@@ -8,8 +8,5 @@ public:
 		this->manager = manager;
 	};
 	void init() override final;
-
-private:
-	bool isClicked;
 };
 

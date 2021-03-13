@@ -9,7 +9,8 @@ void MainScene::init()
 	GameObject* canvas = new GameObject(); // 
 	PredefinedSceneHelper::addMainSceneObjects(manager); // Adding all gameObjects , Mainly buttons for the canvas
 	manager->addGameObject(canvas);
-	canvas->addComponent<MenuCanvas>(toggleIndicator); // Canvas Script handeling the Menu UI .
+	
+	canvas->addComponent<MenuCanvas>(); // Canvas Script handeling the Menu UI .
 }
 
 // No need for an update Function for this Scene . 

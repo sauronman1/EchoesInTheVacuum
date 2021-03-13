@@ -11,6 +11,11 @@ Ship::Ship(ObjectPool* bPool) {
 }
 
 bool Ship::init(){
+	timer = 0;
+	coolDown = 0.3;
+	moveSpeed = 5;
+	isClicked = false;
+
 	TextureManager::get().loadTexture("player", "assets/DKO-api-X1.png");
 	gameObject->addComponent<Sprite>(Game::get().getRenderer(), "player");
 	gameObject->getComponent<Transform>().rotation = 90;

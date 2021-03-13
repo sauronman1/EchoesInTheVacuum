@@ -132,9 +132,6 @@
     <ClCompile Include="src\Game Engine\Essentials\SoundManager\SoundManager.cpp">
       <Filter>Source Files\Game Engine\Essentials\SoundManager</Filter>
     </ClCompile>
-    <ClCompile Include="src\Scripts\Common\NPC.cpp">
-      <Filter>Source Files\Scripts\Common</Filter>
-    </ClCompile>
     <ClCompile Include="src\Scripts\Enemy\Enemy.cpp">
       <Filter>Source Files\Scripts\Enemy</Filter>
     </ClCompile>

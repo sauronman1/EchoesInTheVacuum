@@ -28,8 +28,6 @@ void MenuCanvas::update(float deltaTime)
 		if (SDLEvent::get().getMousePos().x > 750 && SDLEvent::get().getMousePos().x < 1180 && SDLEvent::get().getMousePos().y > 550 && SDLEvent::get().getMousePos().y < 680) {
 			std::cout << SDLEvent::get().getMousePos() << std::endl;
 			SoundManager::Instance()->toggleMusic();
-			toggleB->SetEnabled(!toggleB->isActive());
-
 		}
 	}
 	else if (SDLEvent::get().getButtonDown(LEFT) == false && isClicked == true) {

@@ -9,10 +9,10 @@ public:
 	bool init() override final;
 	void update(float deltaTime) override final;
 private:
-	float timer = 0;
-	float coolDown = 0.3;
-	float moveSpeed = 5;
-	bool isClicked = false;
+	float timer;
+	float coolDown ;
+	float moveSpeed;
+	bool isClicked ;
 	ObjectPool* bulletPool;
 };
 
