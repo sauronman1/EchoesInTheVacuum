@@ -14,24 +14,26 @@ Enemy::Enemy(ObjectPool* bPool, ObjectPool* ePool, GameObject* player) {
 void Enemy::onTriggerEnter2D(GameObject* other) {
 
 	if (col.AABB(other->getComponent<BoxCollider2D>().getRect(), gameObject->getComponent<BoxCollider2D>().getRect()) && other->isActive()) {
+		GameScore::get().incrementGameScore(23);
+		enemyPool->returnGameObject(gameObject);
+
 		if (other->getComponent<BoxCollider2D>().getColisionTag() == "Bullet") {
 			bulletPool->returnGameObject(other);
-			GameScore::get().incrementGameScore(23);
-			enemyPool->returnGameObject(gameObject);
+
 		}
 		if (other->getComponent<BoxCollider2D>().getColisionTag() == "Player" && !collided) {
-			GameScore::get().setHighScore();
-			other->getComponent<Ship>().setHealth(-1);		
+			other->getComponent<Ship>().takeDamage(25);
 			collided = true;
 		}
+
+
+
 	}
 }
 
 bool Enemy::init() {
 	setHealth(2);
 	return true;
-	//stop enemy
-	//enemypool --> returnGameObject(this)
 }
 
 void Enemy::update(float deltaTime) {

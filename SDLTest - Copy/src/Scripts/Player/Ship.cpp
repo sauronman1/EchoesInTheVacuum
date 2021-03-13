@@ -19,7 +19,7 @@ bool Ship::init(){
 	TextureManager::get().loadTexture("player", "assets/DKO-api-X1.png");
 	gameObject->addComponent<Sprite>(Game::get().getRenderer(), "player");
 	gameObject->getComponent<Transform>().rotation = 90;
-	gameObject->addComponent<BoxCollider2D>(Game::get().getRenderer(), 180, 180, "Player");
+	gameObject->addComponent<BoxCollider2D>(Game::get().getRenderer(), 120, 150, "Player");
 	return true;
 }
 

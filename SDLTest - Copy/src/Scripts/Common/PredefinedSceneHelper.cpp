@@ -93,7 +93,7 @@ void PredefinedSceneHelper::addGameSceneObjects(GameObjectManager* manager, Obje
 
 	GameObject* loadingImage = new GameObject();
 	loadingImage->addComponent<Sprite>(Game::get().getRenderer(), "loadingBar");
-	loadingImage->getComponent<Transform>().position = { 1000,10 };
+	loadingImage->getComponent<Transform>().position = { 900,10 };
 	loadingImage->getComponent<Transform>().rotation = 180;
 	loadingImage->getComponent<Transform>().scale = 0.3;
 	manager->addGameObject(loadingImage);
@@ -108,7 +108,6 @@ void PredefinedSceneHelper::addGameSceneObjects(GameObjectManager* manager, Obje
 
 	
 
-	healthLabel = new GameObject();
 	healthLabel->addComponent<UILabel>(Game::get().getRenderer(), "", 105, 90, "gameFontSmall");
 	healthLabel->getComponent<UILabel>().setText("100%"); // it will be health
 	manager->addGameObject(healthLabel);
