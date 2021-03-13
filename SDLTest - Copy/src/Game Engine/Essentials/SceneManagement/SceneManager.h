@@ -23,7 +23,12 @@ public:
 	void update(float deltaTime) { 
 			currentScene->update(deltaTime);
 	}
-
+	bool getSceneState() {
+		return currentScene->sceneFinished;
+	}
+	void setSceneState(bool enabled) {
+		currentScene->sceneFinished = enabled;
+	}
 private:
 	static SceneManager* sm_instance;
 	Scene* currentScene;

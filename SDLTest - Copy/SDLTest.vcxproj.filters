@@ -91,6 +91,12 @@
     <Filter Include="Source Files\Scripts\Player">
       <UniqueIdentifier>{bd69c086-e2e3-48b6-a03d-581a6fad34d9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Scenes\Others">
+      <UniqueIdentifier>{686a14a5-c643-4666-a210-459525c1a22b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Scenes\Others">
+      <UniqueIdentifier>{4963b953-d36c-452b-80ff-5725476ab0a0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game Engine\Essentials\TextureManager.cpp">
@@ -146,6 +152,12 @@
     </ClCompile>
     <ClCompile Include="src\Scripts\Common\GameScore.cpp">
       <Filter>Source Files\Scripts\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scripts\Common\PredefinedSceneHelper.cpp">
+      <Filter>Source Files\Scripts\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scenes\Others\MenuCanvas.cpp">
+      <Filter>Source Files\Scenes\Others</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -235,6 +247,12 @@
     </ClInclude>
     <ClInclude Include="src\Scripts\Common\GameScore.h">
       <Filter>Header Files\Scripts\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scripts\Common\PredefinedSceneHelper.h">
+      <Filter>Header Files\Scripts\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scenes\Others\MenuCanvas.h">
+      <Filter>Header Files\Scenes\Others</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

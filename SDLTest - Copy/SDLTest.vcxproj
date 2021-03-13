@@ -31,9 +31,11 @@
     <ClCompile Include="src\Scenes\CreditsScene.cpp" />
     <ClCompile Include="src\Scenes\GameScene.cpp" />
     <ClCompile Include="src\Scenes\MainScene.cpp" />
+    <ClCompile Include="src\Scenes\Others\MenuCanvas.cpp" />
     <ClCompile Include="src\Scripts\Common\BackgroundEffect.cpp" />
     <ClCompile Include="src\Scripts\Common\GameScore.cpp" />
     <ClCompile Include="src\Scripts\Common\NPC.cpp" />
+    <ClCompile Include="src\Scripts\Common\PredefinedSceneHelper.cpp" />
     <ClCompile Include="src\Scripts\Enemy\Enemy.cpp" />
     <ClCompile Include="src\Scripts\Enemy\EnemySpawner.cpp" />
     <ClCompile Include="src\Scripts\Player\Ship.cpp" />
@@ -62,9 +64,11 @@
     <ClInclude Include="src\Scenes\CreditsScene.h" />
     <ClInclude Include="src\Scenes\GameScene.h" />
     <ClInclude Include="src\Scenes\MainScene.h" />
+    <ClInclude Include="src\Scenes\Others\MenuCanvas.h" />
     <ClInclude Include="src\Scripts\Common\BackgroundEffect.h" />
     <ClInclude Include="src\Scripts\Common\GameScore.h" />
     <ClInclude Include="src\Scripts\Common\NPC.h" />
+    <ClInclude Include="src\Scripts\Common\PredefinedSceneHelper.h" />
     <ClInclude Include="src\Scripts\Enemy\Enemy.h" />
     <ClInclude Include="src\Scripts\Enemy\EnemySpawner.h" />
     <ClInclude Include="src\Scripts\Player\Ship.h" />
