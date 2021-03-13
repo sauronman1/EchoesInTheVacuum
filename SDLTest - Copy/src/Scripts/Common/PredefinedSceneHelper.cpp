@@ -76,6 +76,8 @@ void PredefinedSceneHelper::addGameSceneAssets(int enemyCount)
 	TextureManager::get().loadTexture("player", "assets/Ship.png");
 	TextureManager::get().loadTexture("bullet", "assets/bullet_blaster_small_single.png");
 	TextureManager::get().loadFont("gameFont", "assets/fonts/neuropol.ttf", 30);
+	TextureManager::get().loadFont("gameFontSmall", "assets/fonts/neuropol.ttf", 19);
+
 }
 
 void PredefinedSceneHelper::addGameSceneObjects(GameObjectManager* manager, ObjectPool* bulletPool, GameObject* playerObj, GameObject* scoreLabel, GameObject * healthLabel)
@@ -107,15 +109,16 @@ void PredefinedSceneHelper::addGameSceneObjects(GameObjectManager* manager, Obje
 	
 
 	healthLabel = new GameObject();
-	healthLabel->addComponent<UILabel>(Game::get().getRenderer(), "", 50, 60, "gameFont");
-	healthLabel->getComponent<UILabel>().setText("score: " + std::to_string(GameScore::get().getGameScore())); // it will be health
+	healthLabel->addComponent<UILabel>(Game::get().getRenderer(), "", 105, 90, "gameFontSmall");
+	healthLabel->getComponent<UILabel>().setText("100%"); // it will be health
 	manager->addGameObject(healthLabel);
 
 	playerObj->addComponent<Ship>(bulletPool);
-	scoreLabel->addComponent<UILabel>(Game::get().getRenderer(), "", 880, 60, "gameFont");
-	scoreLabel->getComponent<UILabel>().setText("score: " + std::to_string(GameScore::get().getGameScore()));
-	manager->addGameObject(playerObj);
+	scoreLabel->addComponent<UILabel>(Game::get().getRenderer(), "", 230, 75, "gameFont");
+	scoreLabel->getComponent<UILabel>().setText(CommonFunctions::numToString(GameScore::get().getGameScore()));
 	manager->addGameObject(scoreLabel);
+
+	playerObj->getComponent<Transform>().position = {100,500};
 
 
 	for (auto const& gb : bulletPool->returnAllGameObjectList()) {
@@ -129,7 +132,9 @@ void PredefinedSceneHelper::addGameSceneObjects(GameObjectManager* manager, Obje
 		manager->addGameObject(gb);
 	}
 
+	healthLabel->getComponent<UILabel>().setText("100%");
 
+	manager->addGameObject(playerObj);
 
 }
 

@@ -25,5 +25,7 @@ private:
 
 	int enemyCount;
 	int currentScore;
+	int currentHealth;
+	int healthTemp;
 };
 

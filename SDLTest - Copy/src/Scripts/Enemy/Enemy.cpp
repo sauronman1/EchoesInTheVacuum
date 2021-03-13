@@ -16,7 +16,7 @@ void Enemy::onTriggerEnter2D(GameObject* other) {
 	if (col.AABB(other->getComponent<BoxCollider2D>().getRect(), gameObject->getComponent<BoxCollider2D>().getRect()) && other->isActive()) {
 		if (other->getComponent<BoxCollider2D>().getColisionTag() == "Bullet") {
 			bulletPool->returnGameObject(other);
-			GameScore::get().incrementGameScore(1);
+			GameScore::get().incrementGameScore(23);
 			enemyPool->returnGameObject(gameObject);
 		}
 		if (other->getComponent<BoxCollider2D>().getColisionTag() == "Player" && !collided) {
