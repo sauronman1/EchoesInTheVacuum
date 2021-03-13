@@ -10,6 +10,9 @@ public:
 	GameScene(GameObjectManager* manager) {
 		this->manager = manager;
 	};
+	~GameScene() override {
+		delete bulletPool;
+	}
 	void init() override;
 	void update(float deltaTime) override;
 

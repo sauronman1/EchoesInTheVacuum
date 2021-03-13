@@ -31,20 +31,17 @@ void SceneManager::goToNextScene(int sceneID)
 	removeScene();
 
 	if (sceneID == 0) {
-		MainScene* mainScene = new MainScene(manager);
-		currentScene = mainScene;
+		currentScene  = new MainScene(manager);
 		setCurrentScene();
 	}
 	else if (sceneID == 1)
 	{
-		GameScene* gameScene = new GameScene(manager);
-		currentScene = gameScene;
+		currentScene = new GameScene(manager);
 		setCurrentScene();
 	}
 	else if (sceneID == 2)
 	{
-		CreditsScene* creditsScene = new CreditsScene(manager);
-		currentScene = creditsScene;
+		currentScene = new CreditsScene(manager);
 		setCurrentScene();
 	}
 }

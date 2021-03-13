@@ -14,6 +14,10 @@ private:
 	std::string getRandomTexture();
 	GameObjectManager* manager;
 public :
+
+	EnemySpawner() = default;
+	~EnemySpawner() { delete enemyPool; };
+
 	void initSpawnerWithDelay(GameObjectManager* gManager, ObjectPool* bPool, GameObject* player, bool isActive, int enCount);
 	void spawnEnemies(Vector2<float> position, Vector2<float> force);
 	void activate();

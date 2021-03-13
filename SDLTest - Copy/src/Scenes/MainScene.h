@@ -12,7 +12,7 @@ public:
 		manager = managerT;
 	};
 
-	~MainScene() = default;
+	~MainScene() override {};
 	void init() override;
 
 private:

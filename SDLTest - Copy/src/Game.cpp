@@ -38,7 +38,6 @@ void Game::init(){
     srand(time(NULL));
 
     TextureManager::get().clean();
-
     Game::get().pauseGame();
     SceneManager::get().init(manager);
 

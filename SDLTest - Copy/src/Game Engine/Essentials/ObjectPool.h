@@ -17,20 +17,19 @@ public:
 	}
 
 	void releaseObjts() {
-		while (activeGameObjects.size())
-		{
-			gameObjects.push_front(activeGameObjects.front());
-			activeGameObjects.pop_front();
+		std::list<GameObject*>::iterator i = gameObjects.begin();
+		while (i != gameObjects.end())
+		{		
+				gameObjects.erase(i++);  
 		}
-		while (gameObjects.size())
+
+		i = activeGameObjects.begin();
+		while (i != activeGameObjects.end())
 		{
-			GameObject* obj = gameObjects.front();
-			gameObjects.pop_front();
-			delete obj;
+				activeGameObjects.erase(i++);  
 		}
 	}
 	~ObjectPool() {
-		// free memory
 		releaseObjts();
 	}
 	GameObject* getGameObject()
@@ -43,9 +42,9 @@ public:
 		}
 
 			GameObject* gameObject = gameObjects.front();
+			activeGameObjects.push_front(gameObject);
 			gameObjects.pop_front();
 			gameObject->SetEnabled(true);
-			activeGameObjects.push_front(gameObject);
 			return gameObject;
 		
 	}
