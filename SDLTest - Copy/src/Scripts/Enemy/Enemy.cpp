@@ -25,9 +25,6 @@ void Enemy::onTriggerEnter2D(GameObject* other) {
 			other->getComponent<Ship>().takeDamage(25);
 			collided = true;
 		}
-
-
-
 	}
 }
 
