@@ -4,6 +4,7 @@
 #include "../../Game Engine/GameObject/Components/BoxCollider2D.h"
 #include "../../Game Engine/SDL Events/SDLEvent.h"
 #include "../../Game Engine/Essentials/SceneManagement/SceneManager.h"
+#include "../../Game Engine/Essentials/SoundManager/SoundManager.h"
 Ship::Ship(ObjectPool* bPool) {
 	bulletPool = bPool;
 	health = 100;
@@ -36,10 +37,11 @@ void Ship::update(float deltaTime) {
 
 
 	if (timer > coolDown && (SDLEvent::get().getButtonDown(LEFT) == true || SDLEvent::get().getKeyValue(SDLK_SPACE) == 1) && isClicked == false) {
+		SoundManager::Instance()->playEffect("shootSound");
 		isClicked = true;
 		std::cout << SDLEvent::get().getMousePos() << std::endl;
 		Vector2<float> playerPos = gameObject->getComponent<Transform>().position;
-		bulletPool->getGameObject()->getComponent<Transform>().position = Vector2<float>(playerPos.x + 180, playerPos.y + 55);
+		bulletPool->getGameObject()->getComponent<Transform>().position = Vector2<float>(playerPos.x + 160, playerPos.y + 55);
 		timer = 0;
 	}
 	else if (SDLEvent::get().getButtonDown(LEFT) == false && isClicked == true) {

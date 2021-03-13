@@ -25,7 +25,7 @@ public:
 	static void addMainSceneObjects(GameObjectManager* manager);
 	// Game Scene
 	static void addGameSceneAssets(int enemyCount);
-	static void addGameSceneObjects(GameObjectManager* manager, ObjectPool* bulletPool, GameObject* playerObj, GameObject* scoreLabel);
+	static void addGameSceneObjects(GameObjectManager* manager, ObjectPool* bulletPool, GameObject* playerObj, GameObject* scoreLabel, GameObject* healthLabel);
 	// Credit Scene
 	static void addCreditSceneAssets();
 	static void addCreditSceneObjects(GameObjectManager* manager);

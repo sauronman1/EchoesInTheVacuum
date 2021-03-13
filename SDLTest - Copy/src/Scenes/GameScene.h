@@ -21,6 +21,7 @@ private:
 	GameObject* playerObj;
 	GameObject* enemyObj;
 	GameObject* scoreLabel;
+	GameObject* healthLabel;
 
 	int enemyCount;
 	int currentScore;

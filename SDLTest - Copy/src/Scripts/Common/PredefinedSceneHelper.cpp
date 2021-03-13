@@ -8,8 +8,8 @@ void PredefinedSceneHelper::addMainSceneAssets()
 	TextureManager::get().loadTexture("logo", "assets/game_logo_small.png");
 	TextureManager::get().loadTexture("toggleSymbol", "assets/button_arrow_right.png");
 	TextureManager::get().loadTexture("playSymbol", "assets/control_fuel_icon_alarm.png");
-	TextureManager::get().loadFont("neuropol", "assets/fonts/neuropol.ttf", 30);
-	TextureManager::get().loadFont("neuropolTitle", "assets/fonts/neuropol.ttf", 60);
+	TextureManager::get().loadFont("gameFont", "assets/fonts/neuropol.ttf", 30);
+	TextureManager::get().loadFont("gameFontLarge", "assets/fonts/neuropol.ttf", 60);
 	SoundManager::Instance()->loadMusic("mainMusic", "assets/_Art/Audio/gameMusic.mp3");
 	SoundManager::Instance()->setVolume(10); // Value from 0 to 120
 	SoundManager::Instance()->playMusic("mainMusic");
@@ -24,9 +24,9 @@ void PredefinedSceneHelper::addMainSceneObjects(GameObjectManager* manager)
 	playButtonObj->addComponent<Sprite>(Game::get().getRenderer(), "play");
 	musicButtonObj->addComponent<Sprite>(Game::get().getRenderer(), "music");
 	logoObj->addComponent<Sprite>(Game::get().getRenderer(), "logo");
-	logoLable->addComponent<UILabel>(Game::get().getRenderer(), "", 550, 60, "neuropolTitle");
-	playLable->addComponent<UILabel>(Game::get().getRenderer(), "", 880, 440, "neuropol");
-	toggleLable->addComponent<UILabel>(Game::get().getRenderer(), "", 880, 640, "neuropol");
+	logoLable->addComponent<UILabel>(Game::get().getRenderer(), "", 550, 60, "gameFontLarge");
+	playLable->addComponent<UILabel>(Game::get().getRenderer(), "", 880, 440, "gameFont");
+	toggleLable->addComponent<UILabel>(Game::get().getRenderer(), "", 880, 640, "gameFont");
 	toggleIndicator->addComponent<Sprite>(Game::get().getRenderer(), "toggleSymbol");
 	playSymbol->addComponent<Sprite>(Game::get().getRenderer(), "playSymbol");
 
@@ -61,21 +61,58 @@ void PredefinedSceneHelper::addMainSceneObjects(GameObjectManager* manager)
 
 void PredefinedSceneHelper::addGameSceneAssets(int enemyCount)
 {
+	SoundManager::Instance()->loadEffect("shootSound", "assets/_Art/Audio/singleShot.mp3");
+	TextureManager::get().loadTexture("healthBar", "assets/_Art/PNG/points_powerup_lifes.png");
+	TextureManager::get().loadTexture("loadingBar", "assets/_Art/PNG/loading.png");
+	TextureManager::get().loadTexture("waveCounterBar", "assets/_Art/PNG/points_powerup_lifes_03.png");
+
+	
+
+
 	for (int i = 1;i <= enemyCount;i++) {
 		TextureManager::get().loadTexture("enemy" + CommonFunctions::numToString(i), "assets/_Art/Enemies/enemy" + CommonFunctions::numToString(i) + ".png");
 	}
 
 	TextureManager::get().loadTexture("player", "assets/Ship.png");
 	TextureManager::get().loadTexture("bullet", "assets/bullet_blaster_small_single.png");
-	TextureManager::get().loadFont("score", "assets/fonts/neuropol.ttf", 30);
+	TextureManager::get().loadFont("gameFont", "assets/fonts/neuropol.ttf", 30);
 }
 
-void PredefinedSceneHelper::addGameSceneObjects(GameObjectManager* manager, ObjectPool* bulletPool, GameObject* playerObj, GameObject* scoreLabel)
+void PredefinedSceneHelper::addGameSceneObjects(GameObjectManager* manager, ObjectPool* bulletPool, GameObject* playerObj, GameObject* scoreLabel, GameObject * healthLabel)
 {
+	GameObject *healthImage = new GameObject();
+	healthImage->addComponent<Sprite>(Game::get().getRenderer(), "healthBar");
+	healthImage->getComponent<Transform>().position = {50,20};
+	healthImage->getComponent<Transform>().rotation = 0;
+	healthImage->getComponent<Transform>().scale = 0.5;
+	manager->addGameObject(healthImage);
+
+
+
+	GameObject* loadingImage = new GameObject();
+	loadingImage->addComponent<Sprite>(Game::get().getRenderer(), "loadingBar");
+	loadingImage->getComponent<Transform>().position = { 1000,10 };
+	loadingImage->getComponent<Transform>().rotation = 180;
+	loadingImage->getComponent<Transform>().scale = 0.3;
+	manager->addGameObject(loadingImage);
+
+
+	GameObject* waveCounterImage = new GameObject();
+	waveCounterImage->addComponent<Sprite>(Game::get().getRenderer(), "waveCounterBar");
+	waveCounterImage->getComponent<Transform>().position = { 1700,20 };
+	waveCounterImage->getComponent<Transform>().rotation = 0;
+	waveCounterImage->getComponent<Transform>().scale = 0.5;
+	manager->addGameObject(waveCounterImage);
+
+	
+
+	healthLabel = new GameObject();
+	healthLabel->addComponent<UILabel>(Game::get().getRenderer(), "", 50, 60, "gameFont");
+	healthLabel->getComponent<UILabel>().setText("score: " + std::to_string(GameScore::get().getGameScore())); // it will be health
+	manager->addGameObject(healthLabel);
 
 	playerObj->addComponent<Ship>(bulletPool);
-	scoreLabel->addComponent<UILabel>(Game::get().getRenderer(), "", 880, 60, "score");
-	scoreLabel->getComponent<UILabel>().setFontColor({ 0,128,0 });
+	scoreLabel->addComponent<UILabel>(Game::get().getRenderer(), "", 880, 60, "gameFont");
 	scoreLabel->getComponent<UILabel>().setText("score: " + std::to_string(GameScore::get().getGameScore()));
 	manager->addGameObject(playerObj);
 	manager->addGameObject(scoreLabel);
@@ -84,7 +121,7 @@ void PredefinedSceneHelper::addGameSceneObjects(GameObjectManager* manager, Obje
 	for (auto const& gb : bulletPool->returnAllGameObjectList()) {
 		gb->getComponent<Transform>().setPosition(Vector2<float>(-5000, -5000));
 		gb->addComponent<Projectile>(bulletPool);
-		gb->addComponent<Rigibody2D>(0, 6, 0);
+		gb->addComponent<Rigibody2D>(0, 15, 0);
 		gb->addComponent<BoxCollider2D>(Game::get().getRenderer(), 50, 50, "Bullet");
 		gb->addComponent<Sprite>(Game::get().getRenderer(), "bullet");
 		gb->getComponent<Transform>().rotation = 90;
@@ -100,19 +137,19 @@ void PredefinedSceneHelper::addCreditSceneAssets()
 {
 	TextureManager::get().loadTexture("background", "assets/background_02_static.png");
 	TextureManager::get().loadFont("title", "assets/fonts/neuropol.ttf", 60);
-	TextureManager::get().loadFont("score", "assets/fonts/neuropol.ttf", 30);
+	TextureManager::get().loadFont("gameFont", "assets/fonts/neuropol.ttf", 30);
 	TextureManager::get().loadFont("button", "assets/fonts/neuropol.ttf", 40);
 }
 
 void PredefinedSceneHelper::addCreditSceneObjects(GameObjectManager* manager)
 {
-	GameObject* gb = new GameObject(), * titleLable = new GameObject(), * highscoreLable = new GameObject(), * quitObj = new GameObject()
-		, * playerScoreLable = new GameObject(), * RetryObj = new GameObject();
+	GameObject* gb = new GameObject(), * titleLable = new GameObject(), * highscoreLable = new GameObject(), 
+		* quitObj = new GameObject(), * playerScoreLable = new GameObject(), * RetryObj = new GameObject();
 
 	gb->addComponent<Sprite>(Game::get().getRenderer(), "background");
 	titleLable->addComponent<UILabel>(Game::get().getRenderer(), "", 745, 60, "title");
-	highscoreLable->addComponent<UILabel>(Game::get().getRenderer(), "", 760, 260, "score");
-	playerScoreLable->addComponent<UILabel>(Game::get().getRenderer(), "", 762, 320, "score");
+	highscoreLable->addComponent<UILabel>(Game::get().getRenderer(), "", 760, 260, "gameFont");
+	playerScoreLable->addComponent<UILabel>(Game::get().getRenderer(), "", 762, 320, "gameFont");
 	RetryObj->addComponent<UILabel>(Game::get().getRenderer(), "", 700, 420, "button");
 	quitObj->addComponent<UILabel>(Game::get().getRenderer(), "", 1100, 420, "button");
 

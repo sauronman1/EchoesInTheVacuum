@@ -19,7 +19,7 @@ void GameScene::init()
 	enemySpawner->addComponent<EnemySpawner>().initSpawnerWithDelay(manager, bulletPool, playerObj, true, enemyCount);
 	manager->addGameObject(enemySpawner);
 
-	PredefinedSceneHelper::addGameSceneObjects(manager, bulletPool, playerObj, scoreLabel);	// Add Scene GameObjects
+	PredefinedSceneHelper::addGameSceneObjects(manager, bulletPool, playerObj, scoreLabel, healthLabel);	// Add Scene GameObjects
 
 }
 

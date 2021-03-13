@@ -51,6 +51,5 @@ class Rigibody2D : public Component {
         Vector2<float> force = Vector2<float>();
         Vector2<float> velocity = Vector2<float>();
 
-        //Collider* collider = nullptr;
         Transform* transform = nullptr;
 };
