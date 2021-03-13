@@ -13,7 +13,7 @@ public:
 	};
 
 	~MainScene() override {};
-	void init() override;
+	void init() override final;
 
 private:
 	GameObject* toggleIndicator;

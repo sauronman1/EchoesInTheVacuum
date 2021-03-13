@@ -2,7 +2,6 @@
 #include "../Game Engine/Essentials/SceneManagement/Scene.h"
 #include "../Game Engine/Math/Vector2.h"
 #include "../Scripts/Enemy/EnemySpawner.h"
-//#include "../Game Engine/GameObject/GameObject.h"
 
 class GameScene : public Scene
 {
@@ -13,7 +12,7 @@ public:
 	~GameScene() override {
 		delete bulletPool;
 	}
-	void init() override;
+	void init() override final;
 	void update(float deltaTime) override;
 
 private:

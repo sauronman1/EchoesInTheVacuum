@@ -31,6 +31,7 @@
     <ClCompile Include="src\Scenes\CreditsScene.cpp" />
     <ClCompile Include="src\Scenes\GameScene.cpp" />
     <ClCompile Include="src\Scenes\MainScene.cpp" />
+    <ClCompile Include="src\Scenes\Others\CreditCanvas.cpp" />
     <ClCompile Include="src\Scenes\Others\MenuCanvas.cpp" />
     <ClCompile Include="src\Scripts\Common\BackgroundEffect.cpp" />
     <ClCompile Include="src\Scripts\Common\GameScore.cpp" />
@@ -64,6 +65,7 @@
     <ClInclude Include="src\Scenes\CreditsScene.h" />
     <ClInclude Include="src\Scenes\GameScene.h" />
     <ClInclude Include="src\Scenes\MainScene.h" />
+    <ClInclude Include="src\Scenes\Others\CreditCanvas.h" />
     <ClInclude Include="src\Scenes\Others\MenuCanvas.h" />
     <ClInclude Include="src\Scripts\Common\BackgroundEffect.h" />
     <ClInclude Include="src\Scripts\Common\GameScore.h" />

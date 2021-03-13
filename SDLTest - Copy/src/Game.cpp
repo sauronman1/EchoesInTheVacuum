@@ -66,7 +66,7 @@ void Game::update(float deltaTime){
 }
 
 void Game::clean(){
-    TextureManager::get().clean();
+    SceneManager::get().removeScene();
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();

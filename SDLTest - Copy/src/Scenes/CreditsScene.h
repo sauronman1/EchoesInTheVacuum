@@ -7,14 +7,9 @@ public:
 	CreditsScene(GameObjectManager* manager) {
 		this->manager = manager;
 	};
-	void init();
-	void update(float deltaTime) override;
+	void init() override final;
+
 private:
-	bool isClicked = false;
-	GameObject* titleLable;
-	GameObject* highscoreLable;
-	GameObject* playerScoreLable;
-	GameObject* RetryObj;
-	GameObject* quitObj;
+	bool isClicked;
 };
 

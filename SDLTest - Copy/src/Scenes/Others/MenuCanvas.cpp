@@ -1,13 +1,16 @@
 #include "MenuCanvas.h"
 #include "../../Scripts/Common/PredefinedSceneHelper.h"
 
-bool isClicked = false;
 
-
+bool MenuCanvas::init()
+{
+	isClicked = false;
+	return true;
+}
 
 void MenuCanvas::update(float deltaTime)
 {
-	
+
 	if (SceneManager::get().getSceneState() == true) {
 		return;
 	}
@@ -34,3 +37,5 @@ void MenuCanvas::update(float deltaTime)
 	}
 	
 }
+
+
