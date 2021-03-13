@@ -1,9 +1,9 @@
 #pragma once
-#include "Component.h"
-#include "../GameObject.h"
-#include "../../Essentials/ObjectPool.h"
+#include "../../Game Engine/GameObject/Components/Component.h"
+#include "../../Game Engine/GameObject/GameObject.h"
+#include "../../Game Engine/Essentials/ObjectPool.h"
+#include "../../Game Engine/GameObject/Components/Rigibody2D.h"
 
-#include "Rigibody2D.h"
 
 class Projectile : public Component {
 

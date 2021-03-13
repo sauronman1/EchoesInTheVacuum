@@ -10,8 +10,8 @@ public:
 	void update(float deltaTime) override final;
 private:
 	float timer = 0;
-	float coolDown = 1;
-	float moveSpeed = 2;
+	float coolDown = 0.3;
+	float moveSpeed = 5;
 	bool isClicked = false;
 	ObjectPool* bulletPool;
 };

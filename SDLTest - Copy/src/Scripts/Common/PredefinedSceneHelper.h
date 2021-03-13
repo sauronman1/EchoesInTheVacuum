@@ -7,7 +7,7 @@
 #include "../../Game Engine/SDL Events/SDLEvent.h"
 #include "../../Game Engine/Essentials/SoundManager/SoundManager.h"
 #include "../../Game Engine/GameObject/Components/UILabel.h"
-#include "../../Game Engine/GameObject/Components/Projectile.h"
+#include "../../Scripts/Player/Projectile.h"
 #include "../../Game Engine/GameObject/Components/BoxCollider2D.h"
 #include "../../Scripts/Player/Ship.h"
 #include "../../Scripts/Common/GameScore.h"

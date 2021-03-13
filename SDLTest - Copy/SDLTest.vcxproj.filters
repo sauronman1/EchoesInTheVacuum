@@ -221,9 +221,6 @@
     <ClInclude Include="src\Game Engine\SDL Events\SDLEvent.h">
       <Filter>Header Files\Game Engine\SDL Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game Engine\GameObject\Components\Projectile.h">
-      <Filter>Header Files\Game Engine\GameObject\Components</Filter>
-    </ClInclude>
     <ClInclude Include="src\Game Engine\Essentials\SoundManager\SoundManager.h">
       <Filter>Header Files\Game Engine\Essentials\SoundManager</Filter>
     </ClInclude>
@@ -259,6 +256,9 @@
     </ClInclude>
     <ClInclude Include="src\Scenes\CreditsScene.h">
       <Filter>Header Files\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scripts\Player\Projectile.h">
+      <Filter>Header Files\Scripts\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

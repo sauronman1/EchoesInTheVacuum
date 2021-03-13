@@ -7,7 +7,6 @@
 Ship::Ship(ObjectPool* bPool) {
 	bulletPool = bPool;
 	health = 100;
-
 }
 
 bool Ship::init(){
