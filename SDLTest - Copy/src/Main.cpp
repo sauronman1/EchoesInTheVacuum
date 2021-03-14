@@ -1,8 +1,9 @@
 #include "../src/Game.h"
 #include "Game Engine/SDL Events/SDLEvent.h"
-
 int main(int argc, char** argv){
-  //  Timer& timer = Timer::get();
+  // Checking for any missed memory leak
+ //   _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+
     Game& game = Game::get();
     SDLEvent& sdlEvent = SDLEvent::get();
 
@@ -28,7 +29,9 @@ int main(int argc, char** argv){
     }
 
     sdlEvent.clean();
+    delete &sdlEvent;
     game.clean();
+    delete &Game::get();
 
     return 0;
 }

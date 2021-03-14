@@ -32,7 +32,6 @@ public:
 private:
 	static SceneManager* sm_instance;
 	Scene* currentScene;
-	Scene* oldScene;
 
 	GameObjectManager* manager;
 

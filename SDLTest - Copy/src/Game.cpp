@@ -10,6 +10,7 @@
 #include "Scenes/GameScene.h"
 #include "Scenes/MainScene.h"
 #include "Game Engine/Essentials/SoundManager/SoundManager.h"
+#include "Scripts/Common/GameScore.h"
 
 Game* Game::s_instance = nullptr;
 GameObjectManager* manager = new GameObjectManager();
@@ -67,6 +68,16 @@ void Game::update(float deltaTime){
 
 void Game::clean(){
     SceneManager::get().removeScene();
+    manager->cleanGameObject();
+    delete manager;
+    SoundManager::Instance()->cleanSounds();
+    delete SoundManager::Instance();
+    TextureManager::get().clean();
+    delete &TextureManager::get();
+    delete &SceneManager::get();
+    delete&  GameScore::get();
+
+
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
