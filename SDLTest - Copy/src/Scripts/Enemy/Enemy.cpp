@@ -4,6 +4,7 @@
 #include "../../Game Engine/Essentials/SceneManagement/SceneManager.h"
 #include "../../Game Engine/GameObject/Components/UILabel.h"
 #include "../../Scripts/Common/GameScore.h"
+#include"../../Game Engine/GameObject/Components/Rigibody2D.h"
 
 Enemy::Enemy(ObjectPool* bPool, ObjectPool* ePool, GameObject* player) {
 	bulletPool = bPool;
@@ -31,6 +32,7 @@ void Enemy::onTriggerEnter2D(GameObject* other) {
 bool Enemy::init() {
 	setHealth(2);
 	return true;
+
 }
 
 void Enemy::update(float deltaTime) {
@@ -41,4 +43,8 @@ void Enemy::update(float deltaTime) {
 		onTriggerEnter2D(bullet);
 	}
 	onTriggerEnter2D(playerTarget);
+
+
+	gameObject->getComponent<Rigibody2D>().addFoceXBy(GameScore::get().getWaveNumber());
+	
 }

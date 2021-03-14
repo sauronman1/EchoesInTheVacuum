@@ -32,21 +32,25 @@ class Rigibody2D : public Component {
         }
 
         void update(float deltaTime) override final {
-            velocity.x = force.x + drag.x;
+            velocity.x = (force.x + drag.x) * forceMultiplierX;
             velocity.y = force.y + drag.y + gravityScale*GRAVITY;
             transform->translate(velocity);
         }
 
-        void ChangeForce(Vector2<float> F){
-            force = F;
+        void addFoceXBy(int num){
+            forceMultiplierX = num;
         }
 
         void NoForce() {
             force = { 0,0 };
         }
-
+        Vector2<float> getForce() {
+            return force;
+        }
     private:
         float gravityScale = 1.0f;
+        int forceMultiplierX = 1;
+        int forceMultiplierY = 1;
         Vector2<float> drag = Vector2<float>();
         Vector2<float> force = Vector2<float>();
         Vector2<float> velocity = Vector2<float>();

@@ -32,7 +32,7 @@ class GameObject {
         }
 
         inline void SetEnabled(bool status){
-            active = status;
+            active = status;            
         }
 
 

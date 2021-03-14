@@ -18,7 +18,7 @@ public:
 
     void update(float deltaTime) override final {
         if (rotationSpeed !=0) {
-            transform->rotation += 10* rotationSpeed * deltaTime;
+            transform->rotation = transform->rotation + (10 * rotationSpeed * GameScore::get().getWaveNumber()  * deltaTime);
         }
         if (movementSpeed!=0) {
             speedChange = movementSpeed * 10 * GameScore::get().getWaveNumber();
@@ -37,4 +37,5 @@ private:
     bool resetPosition;
     Transform* transform = nullptr;
     float speedChange;
+    float rotationChange;
 };

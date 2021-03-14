@@ -2,9 +2,13 @@
 #include "../../Game Engine/Essentials/TextureManager.h"
 #include "../../Game Engine/GameObject/Components/Sprite.h"
 #include "../../Game Engine/GameObject/Components/BoxCollider2D.h"
+#include "../../Game Engine/GameObject/Components/Rigibody2D.h"
+
 #include "../../Game Engine/SDL Events/SDLEvent.h"
 #include "../../Game Engine/Essentials/SceneManagement/SceneManager.h"
 #include "../../Game Engine/Essentials/SoundManager/SoundManager.h"
+#include "../Common/GameScore.h"
+
 Ship::Ship(ObjectPool* bPool) {
 	bulletPool = bPool;
 	health = 100;
@@ -46,7 +50,10 @@ void Ship::update(float deltaTime) {
 		isClicked = true;
 		std::cout << SDLEvent::get().getMousePos() << std::endl;
 		Vector2<float> playerPos = gameObject->getComponent<Transform>().position;
-		bulletPool->getGameObject()->getComponent<Transform>().position = Vector2<float>(playerPos.x + 160, playerPos.y + 55);
+		GameObject* gb = bulletPool->getGameObject();
+		gb->getComponent<Transform>().position = Vector2<float>(playerPos.x + 160, playerPos.y + 55);
+		if(GameScore::get().getWaveNumber() >1)
+		gb->getComponent<Rigibody2D>().addFoceXBy(2);
 		timer = 0;
 	}
 	else if (SDLEvent::get().getButtonDown(LEFT) == false && isClicked == true) {

@@ -18,5 +18,6 @@ private:
 	ObjectPool* bulletPool;
 	ObjectPool* enemyPool;
 	GameObject* playerTarget;
+	int tempWaveCount;
 
 };

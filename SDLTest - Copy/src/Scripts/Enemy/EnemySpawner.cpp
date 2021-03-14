@@ -4,19 +4,9 @@
 #include "../../Game Engine/GameObject/Components/Sprite.h"
 #include "../../Scripts/Common/BackgroundEffect.h"
 #include "Enemy.h"
+#include "../Common/GameScore.h"
 
-bool isCreatingEnemies = false;
-int eCounts = 0;
-float spawnDelay = 999;
-int edgeMinYPosition = 0;
-int edgeMaxYPosition = 850;
-float counter = 0;
-Vector2<int> rectDefault = {180,180};
-Vector2<float> offScreen = { 1900,0 };
-Vector2<float> zeroForce = {0,0};
 
- int maxSpawnRateInSeconds = 5;
- int minSpawnRateInSeconds = 1;
 
 void EnemySpawner::ScheduleNextEnemySpawn()
 {
@@ -25,9 +15,15 @@ void EnemySpawner::ScheduleNextEnemySpawn()
 void EnemySpawner::update(float deltaTime)
 {
     counter = counter + deltaTime;
-    spawnDelay = rand() % maxSpawnRateInSeconds + minSpawnRateInSeconds;
 
-    if (counter > spawnDelay) {
+    if (GameScore::get().getWaveNumber() < 8) {
+        spawnDelay = rand() % (maxSpawnRateInSeconds) + (minSpawnRateInSeconds - GameScore::get().getWaveNumber());
+    }
+    else {
+        spawnDelay = rand() % maxSpawnRateInSeconds + (minSpawnRateInSeconds - 7);
+    }
+    
+    if (counter > spawnDelay /10) {
         counter = 0;
         spawnEnemies(offScreen, zeroForce);
         counter = 0;

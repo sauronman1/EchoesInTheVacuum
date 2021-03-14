@@ -149,7 +149,6 @@ void PredefinedSceneHelper::addGameSceneObjects(GameObjectManager* manager, Obje
 	}
 
 	healthLabel->getComponent<UILabel>().setText("100%");
-
 	manager->addGameObject(playerObj);
 
 
