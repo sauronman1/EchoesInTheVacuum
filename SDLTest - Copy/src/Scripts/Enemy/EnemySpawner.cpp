@@ -8,10 +8,6 @@
 
 
 
-void EnemySpawner::ScheduleNextEnemySpawn()
-{
-}
-
 void EnemySpawner::update(float deltaTime)
 {
     counter = counter + deltaTime;
