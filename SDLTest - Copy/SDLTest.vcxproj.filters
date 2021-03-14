@@ -138,9 +138,6 @@
     <ClCompile Include="src\Scripts\Player\Ship.cpp">
       <Filter>Source Files\Scripts\Player</Filter>
     </ClCompile>
-    <ClCompile Include="src\Scripts\Common\BackgroundEffect.cpp">
-      <Filter>Source Files\Scripts\Common</Filter>
-    </ClCompile>
     <ClCompile Include="src\Scripts\Enemy\EnemySpawner.cpp">
       <Filter>Source Files\Scripts\Enemy</Filter>
     </ClCompile>

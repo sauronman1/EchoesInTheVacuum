@@ -31,7 +31,6 @@ void GameScene::update(float deltaTime)
 	if (sceneFinished == true) { return; }
 	// If player Health is 0 end game and go to next Scene.
 	healthTemp = playerObj->getComponent<Ship>().getHealth();
-	CommonFunctions::printConsoleMessage(CommonFunctions::numToString(healthTemp));
 	
 	if (healthTemp <= 0) {
 		sceneFinished = true;

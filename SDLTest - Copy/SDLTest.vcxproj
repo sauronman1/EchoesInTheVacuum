@@ -33,7 +33,6 @@
     <ClCompile Include="src\Scenes\MainScene.cpp" />
     <ClCompile Include="src\Scenes\Others\CreditCanvas.cpp" />
     <ClCompile Include="src\Scenes\Others\MenuCanvas.cpp" />
-    <ClCompile Include="src\Scripts\Common\BackgroundEffect.cpp" />
     <ClCompile Include="src\Scripts\Common\GameScore.cpp" />
     <ClCompile Include="src\Scripts\Common\PredefinedSceneHelper.cpp" />
     <ClCompile Include="src\Scripts\Enemy\Enemy.cpp" />

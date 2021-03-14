@@ -1,4 +1,5 @@
 #include "PredefinedSceneHelper.h"
+#include "../Common/BackgroundEffect.h"
 
 void PredefinedSceneHelper::addMainSceneAssets()
 {
@@ -62,12 +63,12 @@ void PredefinedSceneHelper::addMainSceneObjects(GameObjectManager* manager)
 void PredefinedSceneHelper::addGameSceneAssets(int enemyCount)
 {
 	SoundManager::Instance()->loadEffect("shootSound", "assets/_Art/Audio/singleShot.mp3");
+	TextureManager::get().loadTexture("smallStarGroup1", "assets/_Art/BackgroundArt/SmallStarGroup.png");
+
 	TextureManager::get().loadTexture("healthBar", "assets/_Art/PNG/points_powerup_lifes.png");
 	TextureManager::get().loadTexture("loadingBar", "assets/_Art/PNG/loading.png");
 	TextureManager::get().loadTexture("waveCounterBar", "assets/_Art/PNG/points_powerup_lifes_03.png");
-
 	
-
 
 	for (int i = 1;i <= enemyCount;i++) {
 		TextureManager::get().loadTexture("enemy" + CommonFunctions::numToString(i), "assets/_Art/Enemies/enemy" + CommonFunctions::numToString(i) + ".png");
@@ -82,6 +83,9 @@ void PredefinedSceneHelper::addGameSceneAssets(int enemyCount)
 
 void PredefinedSceneHelper::addGameSceneObjects(GameObjectManager* manager, ObjectPool* bulletPool, GameObject* playerObj, GameObject* scoreLabel, GameObject * healthLabel)
 {
+
+	addGameSceneBackgroundObjects(manager);
+
 	GameObject *healthImage = new GameObject();
 	healthImage->addComponent<Sprite>(Game::get().getRenderer(), "healthBar");
 	healthImage->getComponent<Transform>().position = {50,20};
@@ -135,7 +139,9 @@ void PredefinedSceneHelper::addGameSceneObjects(GameObjectManager* manager, Obje
 
 	manager->addGameObject(playerObj);
 
+
 }
+
 
 void PredefinedSceneHelper::addCreditSceneAssets()
 {
@@ -175,4 +181,33 @@ void PredefinedSceneHelper::addCreditSceneObjects(GameObjectManager* manager)
 	manager->addGameObject(RetryObj);
 	manager->addGameObject(quitObj);
 
+
+}
+
+void PredefinedSceneHelper::addGameSceneBackgroundObjects(GameObjectManager* manager)
+{
+	// No need for creating a pool for these coz they will be created one and lopp when their pos x is offset . not like Bullet and Enemy 
+	// where we are destroying and fetching back . 
+
+	// Fast coding as have to deliver the project :) . will make the background hard coded 
+
+	float tempX = 0;
+	float tempY = 50;
+	for (int i = 0; i <= 6;i++) {
+		if (i == 4) {
+			tempY = 500;
+			tempX = 0;
+		}
+
+		GameObject* star = new GameObject();
+		star->addComponent<Sprite>(Game::get().getRenderer(), "smallStarGroup1");
+		star->getComponent<Transform>().position = { tempX,tempY };
+		star->addComponent<BackgroundEffect>(0,4,true);
+		//star->getComponent<Transform>().scale = 2;
+
+		manager->addGameObject(star);
+		tempX += 600;
+
+	}
+//C:\Users\Gento_PC\OneDrive\Desktop\SpaceShooting - master\Assets\_Art\BackgroundArt
 }

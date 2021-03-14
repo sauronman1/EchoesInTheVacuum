@@ -12,7 +12,7 @@ int edgeMinYPosition = 0;
 int edgeMaxYPosition = 850;
 float counter = 0;
 Vector2<int> rectDefault = {180,180};
-Vector2<float> offScreen = { 1700,0 };
+Vector2<float> offScreen = { 1900,0 };
 Vector2<float> zeroForce = {0,0};
 
  int maxSpawnRateInSeconds = 5;
@@ -67,7 +67,7 @@ void EnemySpawner::createAllEnemies(ObjectPool* bPool, GameObject* player)
             std::stringstream geek(numberIs);
             geek >> theNumber;
             if (theNumber == 3 || theNumber == 4 || theNumber == 5 || theNumber == 7)
-                gb->addComponent<BackgroundEffect>(true, false, 6, 0);
+                gb->addComponent<BackgroundEffect>(6, 0, 0);
             gb->addComponent<Sprite>(Game::get().getRenderer(), sprite);
             gb->getComponent<Transform>().rotation = -90;
             gb->getComponent<Transform>().scale = 0.35f;

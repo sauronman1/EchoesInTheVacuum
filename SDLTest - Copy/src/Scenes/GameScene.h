@@ -17,7 +17,7 @@ public:
 
 private:
 	ObjectPool* bulletPool = new ObjectPool(100);
-	
+
 	GameObject* playerObj;
 	GameObject* enemyObj;
 	GameObject* scoreLabel;
