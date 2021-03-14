@@ -9,7 +9,6 @@ class EnemySpawner : public Component
 private: 
 	ObjectPool *enemyPool = new ObjectPool(300);
 	void createAllEnemies(ObjectPool* bPool, GameObject* player);
-	void ScheduleNextEnemySpawn();
 	void update(float deltaTime) override final;
 	std::string getRandomTexture();
 	GameObjectManager* manager;

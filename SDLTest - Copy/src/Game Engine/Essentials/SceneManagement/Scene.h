@@ -12,7 +12,4 @@ public:
 
 protected:
 	GameObjectManager* manager;
-
-private:
-	
 };
