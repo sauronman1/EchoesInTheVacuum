@@ -1,8 +1,10 @@
 #include "../src/Game.h"
 #include "Game Engine/SDL Events/SDLEvent.h"
 int main(int argc, char** argv){
+
   // Checking for any missed memory leak
- //   _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+  //   _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+  //  _CrtSetBreakAlloc(175); Checking the pointer leaks at this address
 
     Game& game = Game::get();
     SDLEvent& sdlEvent = SDLEvent::get();
