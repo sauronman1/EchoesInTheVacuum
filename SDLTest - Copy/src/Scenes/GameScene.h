@@ -22,10 +22,18 @@ private:
 	GameObject* enemyObj;
 	GameObject* scoreLabel;
 	GameObject* healthLabel;
+	GameObject* waveLabel;
+	GameObject* coolDownLabel;
+
+
 
 	int enemyCount;
 	int currentScore;
 	int currentHealth;
+	int currentWave;
+
 	int healthTemp;
+	int cooldown;
+	float counter;
 };
 

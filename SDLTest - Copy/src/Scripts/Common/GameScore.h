@@ -7,6 +7,7 @@ class GameScore
 private:
 	 int score;
 		static  GameScore* s_instance;
+		int waveCounter;
 
 public:
 
@@ -21,37 +22,13 @@ public:
 		return *s_instance;
 	}
 
+	 void incrementGameScore(int addToScore) {score += addToScore;}
+	 void initScore() {score = 0; waveCounter = 1;}
+	 int getGameScore() {return score;}
 
+	 int getHighScore();
+	 void setHighScore();
 
-	 void incrementGameScore(int addToScore) {
-		score += addToScore;
-	}
-	 void initScore() {
-		score = 0;
-	}
-	 int getGameScore() {
-		return score;
-	}
-
-	 int getHighScore()
-	{
-		int x = 0; // return 0 if no score there.
-
-		std::string scoreText = CommonFunctions::readFirstLineOnly("test.xml");
-
-		if (scoreText.find("\n") != std::string::npos) {
-			int pos = scoreText.find("\n");
-			scoreText = scoreText.substr(0, pos);
-		}
-
-		std::stringstream geek(scoreText);
-		geek >> x;
-
-		return x;
-	}
-	 void setHighScore() {
-		if (score > getHighScore()) {
-			CommonFunctions::writeToFile(CommonFunctions::numToString(score), "test.xml");
-		}
-	}
+	 int getWaveNumber();
+	 void incrementWave();
 };

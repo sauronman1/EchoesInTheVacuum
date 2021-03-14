@@ -78,10 +78,12 @@ void PredefinedSceneHelper::addGameSceneAssets(int enemyCount)
 	TextureManager::get().loadTexture("bullet", "assets/bullet_blaster_small_single.png");
 	TextureManager::get().loadFont("gameFont", "assets/fonts/neuropol.ttf", 30);
 	TextureManager::get().loadFont("gameFontSmall", "assets/fonts/neuropol.ttf", 19);
+	TextureManager::get().loadFont("gameFontLarge", "assets/fonts/neuropol.ttf", 40);
 
 }
 
-void PredefinedSceneHelper::addGameSceneObjects(GameObjectManager* manager, ObjectPool* bulletPool, GameObject* playerObj, GameObject* scoreLabel, GameObject * healthLabel)
+void PredefinedSceneHelper::addGameSceneObjects(GameObjectManager* manager, ObjectPool* bulletPool, GameObject* playerObj, GameObject* scoreLabel, GameObject * healthLabel,
+	GameObject* waveLabel, GameObject* cooldownLable)
 {
 
 	addGameSceneBackgroundObjects(manager);
@@ -111,16 +113,27 @@ void PredefinedSceneHelper::addGameSceneObjects(GameObjectManager* manager, Obje
 	manager->addGameObject(waveCounterImage);
 
 	
+	waveLabel->addComponent<UILabel>(Game::get().getRenderer(), "", 1010, 43, "gameFontSmall");
+	waveLabel->getComponent<UILabel>().setText(" 1"); 
+	manager->addGameObject(waveLabel);
+
+
+	cooldownLable->addComponent<UILabel>(Game::get().getRenderer(), "", 1767, 70, "gameFontLarge");
+	cooldownLable->getComponent<UILabel>().setText("9"); 
+	manager->addGameObject(cooldownLable);
+
+
+
 
 	healthLabel->addComponent<UILabel>(Game::get().getRenderer(), "", 105, 90, "gameFontSmall");
-	healthLabel->getComponent<UILabel>().setText("100%"); // it will be health
+	healthLabel->getComponent<UILabel>().setText("100%"); 
 	manager->addGameObject(healthLabel);
 
-	playerObj->addComponent<Ship>(bulletPool);
 	scoreLabel->addComponent<UILabel>(Game::get().getRenderer(), "", 230, 75, "gameFont");
 	scoreLabel->getComponent<UILabel>().setText(CommonFunctions::numToString(GameScore::get().getGameScore()));
 	manager->addGameObject(scoreLabel);
-
+	
+	playerObj->addComponent<Ship>(bulletPool);
 	playerObj->getComponent<Transform>().position = {100,500};
 
 
@@ -128,7 +141,7 @@ void PredefinedSceneHelper::addGameSceneObjects(GameObjectManager* manager, Obje
 		gb->getComponent<Transform>().setPosition(Vector2<float>(-5000, -5000));
 		gb->addComponent<Projectile>(bulletPool);
 		gb->addComponent<Rigibody2D>(0, 15, 0);
-		gb->addComponent<BoxCollider2D>(Game::get().getRenderer(), 50, 50, "Bullet");
+		gb->addComponent<BoxCollider2D>(Game::get().getRenderer(), 40, 40, "Bullet");
 		gb->addComponent<Sprite>(Game::get().getRenderer(), "bullet");
 		gb->getComponent<Transform>().rotation = 90;
 

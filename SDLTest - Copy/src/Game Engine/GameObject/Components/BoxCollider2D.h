@@ -27,7 +27,7 @@ class BoxCollider2D : public Component{
         }
 
         void draw() override final {
-        //    SDL_SetRenderDrawColor(rTarget, 255, 214, 98, 255);
+          //  SDL_SetRenderDrawColor(rTarget, 255, 214, 98, 255);
          //   SDL_RenderDrawRect(rTarget, &box);
         }
 

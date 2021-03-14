@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Game Engine/GameObject/Components/Transform.h"
+#include "../Common/GameScore.h"
 class BackgroundEffect : public Component
 {
 
@@ -20,7 +21,8 @@ public:
             transform->rotation += 10* rotationSpeed * deltaTime;
         }
         if (movementSpeed!=0) {
-            transform->translate(Vector2<float>(-movementSpeed * 10, 0) * deltaTime);
+            speedChange = movementSpeed * 10 * GameScore::get().getWaveNumber();
+            transform->translate(Vector2<float>(-speedChange, 0) * deltaTime);
         }
         if (resetPosition) {
             if (gameObject->getComponent<Transform>().position.x < -250) {
@@ -34,4 +36,5 @@ private:
     float movementSpeed;
     bool resetPosition;
     Transform* transform = nullptr;
+    float speedChange;
 };

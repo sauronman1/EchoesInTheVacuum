@@ -41,6 +41,7 @@ class Game {
             return renderer;
         }
 
+
     private:
         bool running;
         SDL_Window* window;
