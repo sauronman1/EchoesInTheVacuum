@@ -26,6 +26,7 @@ private:
 
 	int maxSpawnRateInSeconds = 10;
 	int minSpawnRateInSeconds = 8;
+
 public :
 
 	EnemySpawner() = default;

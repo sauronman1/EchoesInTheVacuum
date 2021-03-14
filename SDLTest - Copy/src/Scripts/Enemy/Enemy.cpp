@@ -5,6 +5,7 @@
 #include "../../Game Engine/GameObject/Components/UILabel.h"
 #include "../../Scripts/Common/GameScore.h"
 #include"../../Game Engine/GameObject/Components/Rigibody2D.h"
+#include"../../Game Engine/Essentials/SoundManager/SoundManager.h"
 
 Enemy::Enemy(ObjectPool* bPool, ObjectPool* ePool, GameObject* player) {
 	bulletPool = bPool;
@@ -18,6 +19,7 @@ void Enemy::onTriggerEnter2D(GameObject* other) {
 		GameScore::get().incrementGameScore(23);
 		enemyPool->returnGameObject(gameObject);
 
+		
 		if (other->getComponent<BoxCollider2D>().getColisionTag() == "Bullet") {
 			bulletPool->returnGameObject(other);
 

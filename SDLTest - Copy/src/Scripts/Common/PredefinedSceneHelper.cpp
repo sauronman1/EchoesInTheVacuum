@@ -62,9 +62,12 @@ void PredefinedSceneHelper::addMainSceneObjects(GameObjectManager* manager)
 
 void PredefinedSceneHelper::addGameSceneAssets(int enemyCount)
 {
+	TextureManager::get().loadTexture("BigPlanet", "assets/_Art/BackgroundArt/BigPlanet.png");
+	TextureManager::get().loadTexture("Planet2", "assets/_Art/BackgroundArt/Planet2.png");
 	SoundManager::Instance()->loadEffect("shootSound", "assets/_Art/Audio/singleShot.mp3");
-	TextureManager::get().loadTexture("smallStarGroup1", "assets/_Art/BackgroundArt/SmallStarGroup.png");
 
+	TextureManager::get().loadTexture("smallStarGroup1", "assets/_Art/BackgroundArt/SmallStarGroup.png");
+	TextureManager::get().loadTexture("Planet", "assets/_Art/BackgroundArt/Planet.png");
 	TextureManager::get().loadTexture("healthBar", "assets/_Art/PNG/points_powerup_lifes.png");
 	TextureManager::get().loadTexture("loadingBar", "assets/_Art/PNG/loading.png");
 	TextureManager::get().loadTexture("waveCounterBar", "assets/_Art/PNG/points_powerup_lifes_03.png");
@@ -85,8 +88,8 @@ void PredefinedSceneHelper::addGameSceneAssets(int enemyCount)
 void PredefinedSceneHelper::addGameSceneObjects(GameObjectManager* manager, ObjectPool* bulletPool, GameObject* playerObj, GameObject* scoreLabel, GameObject * healthLabel,
 	GameObject* waveLabel, GameObject* cooldownLable)
 {
-
 	addGameSceneBackgroundObjects(manager);
+
 
 	GameObject *healthImage = new GameObject();
 	healthImage->addComponent<Sprite>(Game::get().getRenderer(), "healthBar");
@@ -221,5 +224,30 @@ void PredefinedSceneHelper::addGameSceneBackgroundObjects(GameObjectManager* man
 		tempX += 600;
 
 	}
-//C:\Users\Gento_PC\OneDrive\Desktop\SpaceShooting - master\Assets\_Art\BackgroundArt
+
+	
+		GameObject* Planet1 = new GameObject();
+		Planet1->addComponent<Sprite>(Game::get().getRenderer(), "Planet");
+		Planet1->getComponent<Transform>().position = { 300,200 };
+		Planet1->addComponent<BackgroundEffect>(0, 0.2, true);
+		Planet1->getComponent<Transform>().scale = 0.5;
+
+		manager->addGameObject(Planet1);
+
+		GameObject* BigPlanet = new GameObject();
+		BigPlanet->addComponent<Sprite>(Game::get().getRenderer(), "BigPlanet");
+		BigPlanet->getComponent<Transform>().position = { 1300,-200 };
+		BigPlanet->addComponent<BackgroundEffect>(0, 0.2, true);
+
+		manager->addGameObject(BigPlanet);
+
+		
+		GameObject* Planet2 = new GameObject();
+		Planet2->addComponent<Sprite>(Game::get().getRenderer(), "Planet2");
+		Planet2->getComponent<Transform>().position = { 1600,700 };
+		Planet2->addComponent<BackgroundEffect>(0, 0.2, true);
+		Planet2->getComponent<Transform>().scale = 0.5;
+
+		manager->addGameObject(Planet2);
+
 }

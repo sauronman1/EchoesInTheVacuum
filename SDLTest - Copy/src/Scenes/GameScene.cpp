@@ -15,7 +15,6 @@ void GameScene::init()
 
 	Game::get().unPauseGame(); // Unpausing all the updates as the scene is init and previous memory scene has been cleaned
 	GameScore::get().initScore(); // Set Score to Zero as its a new Game
-	PredefinedSceneHelper::addGameSceneAssets(enemyCount); // Adding Textures and Scounds that are gonna be used in this scene
 
 	waveLabel = new GameObject();
 	coolDownLabel = new GameObject();
@@ -24,10 +23,10 @@ void GameScene::init()
 	healthLabel = new GameObject();
 
 	GameObject* enemySpawner = new GameObject(); // GameObject will be outside the screen where enemies will Spawn .
+	PredefinedSceneHelper::addGameSceneAssets(enemyCount); // Adding Textures and Scounds that are gonna be used in this scene
+	PredefinedSceneHelper::addGameSceneObjects(manager, bulletPool, playerObj, scoreLabel, healthLabel, waveLabel, coolDownLabel);	// Add Scene GameObjects
 	enemySpawner->addComponent<EnemySpawner>().initSpawnerWithDelay(manager, bulletPool, playerObj, true, enemyCount);
 	manager->addGameObject(enemySpawner);
-
-	PredefinedSceneHelper::addGameSceneObjects(manager, bulletPool, playerObj, scoreLabel, healthLabel, waveLabel, coolDownLabel);	// Add Scene GameObjects
 
 }
 
