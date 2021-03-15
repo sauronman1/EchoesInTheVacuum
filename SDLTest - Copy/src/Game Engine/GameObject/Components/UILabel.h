@@ -55,6 +55,10 @@ class UILabel: public Component {
             fontColor = color;
         }
 
+        std::string getText() {
+            return text;
+        }
+
     private:
         SDL_Rect shape = {0,0,0,0};
         SDL_Texture* texture = nullptr;

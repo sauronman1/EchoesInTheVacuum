@@ -34,6 +34,7 @@ private:
 
 	int healthTemp;
 	int cooldown;
+	int cooldownLableNum;
 	float counter;
 };
 

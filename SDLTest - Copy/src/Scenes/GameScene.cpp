@@ -12,7 +12,7 @@ void GameScene::init()
 	counter = 0;
 	currentWave = 1;
 	healthTemp = currentHealth;
-
+	cooldownLableNum = 9;
 	Game::get().unPauseGame(); // Unpausing all the updates as the scene is init and previous memory scene has been cleaned
 	GameScore::get().initScore(); // Set Score to Zero as its a new Game
 
@@ -33,10 +33,11 @@ void GameScene::init()
 
 void GameScene::update(float deltaTime)
 {
+	
 	if (sceneFinished == true) { return; }
 	// If player Health is 0 end game and go to next Scene.
 	counter += deltaTime;
-
+	
 	healthTemp = playerObj->getComponent<Ship>().getHealth();
 	
 	if (healthTemp <= 0) {
@@ -46,7 +47,8 @@ void GameScene::update(float deltaTime)
 		SceneManager::get().goToNextScene(2);
 		return;
 	}
-
+	
+	
 	// if Score Changed then update UI
 	if (currentScore != GameScore::get().getGameScore()) {
 		currentScore = GameScore::get().getGameScore();
@@ -69,13 +71,21 @@ void GameScene::update(float deltaTime)
 		cooldown = 9;
 		GameScore::get().incrementWave();
 	}
-	
+
+	/*
 	coolDownLabel->getComponent<UILabel>().setText(CommonFunctions::numToString(cooldown)); 
+	*/
+	if (cooldownLableNum != cooldown) {
+		coolDownLabel->getComponent<UILabel>().setText(CommonFunctions::numToString(cooldown));
+		cooldownLableNum = cooldown;
+	}
+
+
 
 	if (currentWave != GameScore::get().getWaveNumber()) {
 		currentWave = GameScore::get().getWaveNumber();
 		waveLabel->getComponent<UILabel>().setText(CommonFunctions::numToString(GameScore::get().getWaveNumber())); 
 	}
-
+	
 
 }
