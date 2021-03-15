@@ -72,14 +72,11 @@ void GameScene::update(float deltaTime)
 		GameScore::get().incrementWave();
 	}
 
-	/*
-	coolDownLabel->getComponent<UILabel>().setText(CommonFunctions::numToString(cooldown)); 
-	*/
+
 	if (cooldownLableNum != cooldown) {
 		coolDownLabel->getComponent<UILabel>().setText(CommonFunctions::numToString(cooldown));
 		cooldownLableNum = cooldown;
 	}
-
 
 
 	if (currentWave != GameScore::get().getWaveNumber()) {
